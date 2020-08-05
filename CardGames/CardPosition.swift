@@ -29,52 +29,42 @@ import Foundation
 //       +- DeckStack: top $n cards visible to the right, with $m
 //                     visible on top the main stack to the left.
 
-class Position {
+class CardPosition {
     
-    private var node: SKSpriteNode
-    private var border: SKShapeNode
+    let size = Card.size
+    var position: CGPoint
+    var z: CGFloat = 0.0
     
     init(x: CGFloat, y: CGFloat) {
-        self.node = SKSpriteNode(color: SKColor.clear, size: Card.size)
-        self.border = SKShapeNode(rect: node.frame)
-        self.border.fillColor = .clear
-        self.border.strokeColor = SKColor.white
-        self.border.lineWidth = 1.0
-        self.node.addChild(self.border)
-        
-        self.set_position(x, y)
-    }
-    
-    func get_node() -> SKSpriteNode {
-        return self.node
+        self.position = CGPoint(x: x, y: y)
     }
     
     func set_position(_ x: CGFloat, _ y: CGFloat) {
-        self.node.position = CGPoint(x: x, y: y)
+        self.position = CGPoint(x: x, y: y)
     }
     
-    func set_z(_ z: CGFloat) {
-        self.node.zPosition = z
+    func set_position(fromPoint point: CGPoint) {
+        self.position = point
+    }
+    
+    func get_position() -> CGPoint {
+        return self.position
     }
     
     func get_x() -> CGFloat {
-        return self.node.position.x
+        return self.position.x
     }
     
     func get_y() -> CGFloat {
-        return self.node.position.y
+        return self.position.y
     }
     
     func get_w() -> CGFloat {
-        return self.node.size.width
+        return self.size.width
     }
     
     func get_h() -> CGFloat {
-        return self.node.size.height
-    }
-    
-    func get_z() -> CGFloat {
-        return self.node.zPosition
+        return self.size.height
     }
     
     func point_hits(pt: CGPoint) -> CGFloat? {
@@ -87,14 +77,10 @@ class Position {
         let shh = self.get_h()*0.5
         
         if px > (sx - shw) && px < (sx + shw) && py > (sy - shh) && py < (sy + shh) {
-            return self.get_z()
+            return self.z
         }
         else {
             return nil
         }
-    }
-    
-    func get_position() -> CGPoint {
-        return self.node.position
     }
 }
