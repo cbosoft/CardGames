@@ -60,4 +60,9 @@ class CardPosition: SKNode {
     func run(action: SKAction) {
         // pass
     }
+    
+    func uid() -> String {
+        let uid = UInt(bitPattern: ObjectIdentifier(self))
+        return String(format: "%x", uid)
+    }
 }
