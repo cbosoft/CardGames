@@ -18,6 +18,14 @@
 		8358783A24D9C9AB00A3AFCA /* CardGamesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358783924D9C9AB00A3AFCA /* CardGamesUITests.swift */; };
 		8358784824DAAAAB00A3AFCA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358784724DAAAAB00A3AFCA /* Card.swift */; };
 		8358784A24DAE4C800A3AFCA /* CardPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358784924DAE4C800A3AFCA /* CardPosition.swift */; };
+		8358784C24DAF66900A3AFCA /* CardStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358784B24DAF66900A3AFCA /* CardStack.swift */; };
+		8358784F24DAFB6600A3AFCA /* VisibleStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358784E24DAFB6600A3AFCA /* VisibleStack.swift */; };
+		8358785124DAFD7200A3AFCA /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358785024DAFD7200A3AFCA /* Deck.swift */; };
+		8358785324DB0BD200A3AFCA /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358785224DB0BD200A3AFCA /* Table.swift */; };
+		8358785524DB0C9400A3AFCA /* SolitaireTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358785424DB0C9400A3AFCA /* SolitaireTable.swift */; };
+		8358785724DB0D4300A3AFCA /* DeckStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358785624DB0D4300A3AFCA /* DeckStack.swift */; };
+		8358785924DB169200A3AFCA /* TopStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358785824DB169200A3AFCA /* TopStack.swift */; };
+		8358785B24DB179500A3AFCA /* SuitedTopStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358785A24DB179500A3AFCA /* SuitedTopStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +64,15 @@
 		8358783B24D9C9AB00A3AFCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8358784724DAAAAB00A3AFCA /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		8358784924DAE4C800A3AFCA /* CardPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPosition.swift; sourceTree = "<group>"; };
+		8358784B24DAF66900A3AFCA /* CardStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStack.swift; sourceTree = "<group>"; };
+		8358784D24DAFA3B00A3AFCA /* Structure.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Structure.md; sourceTree = "<group>"; };
+		8358784E24DAFB6600A3AFCA /* VisibleStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleStack.swift; sourceTree = "<group>"; };
+		8358785024DAFD7200A3AFCA /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		8358785224DB0BD200A3AFCA /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
+		8358785424DB0C9400A3AFCA /* SolitaireTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolitaireTable.swift; sourceTree = "<group>"; };
+		8358785624DB0D4300A3AFCA /* DeckStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStack.swift; sourceTree = "<group>"; };
+		8358785824DB169200A3AFCA /* TopStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStack.swift; sourceTree = "<group>"; };
+		8358785A24DB179500A3AFCA /* SuitedTopStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuitedTopStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +128,16 @@
 				8358781924D9C9A700A3AFCA /* Actions.sks */,
 				8358781B24D9C9A700A3AFCA /* GameScene.swift */,
 				8358784724DAAAAB00A3AFCA /* Card.swift */,
+				8358784B24DAF66900A3AFCA /* CardStack.swift */,
 				8358784924DAE4C800A3AFCA /* CardPosition.swift */,
+				8358784D24DAFA3B00A3AFCA /* Structure.md */,
+				8358785224DB0BD200A3AFCA /* Table.swift */,
+				8358785424DB0C9400A3AFCA /* SolitaireTable.swift */,
+				8358785624DB0D4300A3AFCA /* DeckStack.swift */,
+				8358785824DB169200A3AFCA /* TopStack.swift */,
+				8358785A24DB179500A3AFCA /* SuitedTopStack.swift */,
+				8358785024DAFD7200A3AFCA /* Deck.swift */,
+				8358784E24DAFB6600A3AFCA /* VisibleStack.swift */,
 				8358781D24D9C9A700A3AFCA /* ViewController.swift */,
 				8358781F24D9C9AA00A3AFCA /* Assets.xcassets */,
 				8358782124D9C9AA00A3AFCA /* Main.storyboard */,
@@ -271,11 +297,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8358785924DB169200A3AFCA /* TopStack.swift in Sources */,
 				8358781E24D9C9A700A3AFCA /* ViewController.swift in Sources */,
+				8358784C24DAF66900A3AFCA /* CardStack.swift in Sources */,
 				8358781C24D9C9A700A3AFCA /* GameScene.swift in Sources */,
+				8358785324DB0BD200A3AFCA /* Table.swift in Sources */,
 				8358781624D9C9A700A3AFCA /* AppDelegate.swift in Sources */,
+				8358785524DB0C9400A3AFCA /* SolitaireTable.swift in Sources */,
+				8358785124DAFD7200A3AFCA /* Deck.swift in Sources */,
+				8358784F24DAFB6600A3AFCA /* VisibleStack.swift in Sources */,
+				8358785724DB0D4300A3AFCA /* DeckStack.swift in Sources */,
 				8358784A24DAE4C800A3AFCA /* CardPosition.swift in Sources */,
 				8358784824DAAAAB00A3AFCA /* Card.swift in Sources */,
+				8358785B24DB179500A3AFCA /* SuitedTopStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
