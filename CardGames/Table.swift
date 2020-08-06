@@ -13,7 +13,7 @@ class Table: SKNode {
     
     var deck: Deck = Deck()
     var card_stacks: [CardStack] = []
-    var selected_card: Card? = nil
+    var selected_card: CardPosition? = nil
     var source_stack: CardStack? = nil
     
     override init() {
@@ -27,14 +27,10 @@ class Table: SKNode {
     
     func try_pick_up_card(here: CGPoint) {
         // Pick up a card
-        var selected_z: CGFloat = -1.0
         for stack in self.card_stacks {
-            if let z = stack.point_hits(pt: here) {
-                if z > selected_z {
-                    self.source_stack = stack
-                    self.selected_card = stack.take_top_card()
-                    selected_z = z
-                }
+            if let card_or_stack = stack.try_take(point: here) {
+                self.selected_card = card_or_stack
+                self.source_stack = stack
             }
         }
         
@@ -52,6 +48,9 @@ class Table: SKNode {
                 x: here.x - Card.size.width/2,
                 y: here.y - Card.size.height/2)
             card.position = newPos
+            if let card = card as? VisibleStack {
+                card.display_cards()
+            }
         }
     }
     
@@ -62,12 +61,14 @@ class Table: SKNode {
         }
         
         var selected_z: CGFloat = -1.0
-        var destination_stack: CardStack? = self.source_stack
+        var destination_stack: CardStack = self.source_stack!
         for stack in self.card_stacks {
             if let z = stack.point_hits(pt: here) {
                 if z > selected_z {
-                    destination_stack = stack
-                    selected_z = z
+                    if ObjectIdentifier(stack) != ObjectIdentifier(self.selected_card!) {
+                        destination_stack = stack
+                        selected_z = z
+                    }
                 }
             }
         }

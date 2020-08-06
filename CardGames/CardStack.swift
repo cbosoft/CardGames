@@ -31,9 +31,15 @@ class CardStack: CardPosition {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func add_card(_ card: Card) {
-        self.cards.append(card)
-        self.display_cards()
+    @discardableResult func add_card(_ card: CardPosition) -> Bool {
+        if let card = card as? Card {
+            self.cards.append(card)
+            self.display_cards()
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     func remove_card(_ card: Card) throws {
@@ -49,16 +55,19 @@ class CardStack: CardPosition {
         }
     }
     
-    func take_top_card() -> Card? {
-        if let rv = self.cards.last {
-            let index = self.cards.count - 1
-            self.cards.remove(at: index)
-            self.display_cards()
-            return rv
+    func try_take(point: CGPoint) -> CardPosition? {
+        if self.point_hits(pt: point) != nil {
+            if let rv = self.cards.last {
+                let index = self.cards.count - 1
+                self.cards.remove(at: index)
+                self.display_cards()
+                return rv
+            }
+            else {
+                return nil
+            }
         }
-        else {
-            return nil
-        }
+        return nil
     }
     
     func display_cards() {

@@ -56,4 +56,8 @@ class CardPosition: SKNode {
             return nil
         }
     }
+    
+    func run(action: SKAction) {
+        // pass
+    }
 }

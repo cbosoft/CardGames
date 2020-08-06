@@ -88,7 +88,7 @@ class Card: CardPosition {
         return self.flipped
     }
     
-    func run(action: SKAction) {
+    override func run(action: SKAction) {
         self.run(action)
     }
     
