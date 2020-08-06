@@ -74,6 +74,7 @@
 		8358785824DB169200A3AFCA /* TopStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStack.swift; sourceTree = "<group>"; };
 		8358785A24DB179500A3AFCA /* SuitedTopStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuitedTopStack.swift; sourceTree = "<group>"; };
 		8358785C24DC017000A3AFCA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8358785D24DC019C00A3AFCA /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +139,7 @@
 				8358785824DB169200A3AFCA /* TopStack.swift */,
 				8358785A24DB179500A3AFCA /* SuitedTopStack.swift */,
 				8358785C24DC017000A3AFCA /* README.md */,
+				8358785D24DC019C00A3AFCA /* TODO.md */,
 				8358785024DAFD7200A3AFCA /* Deck.swift */,
 				8358784E24DAFB6600A3AFCA /* VisibleStack.swift */,
 				8358781D24D9C9A700A3AFCA /* ViewController.swift */,
