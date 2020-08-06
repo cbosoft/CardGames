@@ -9,25 +9,6 @@
 import SpriteKit
 import Foundation
 
-// Rough structure:
-//
-// CardPosition: base locator for cards, which manages location and
-//   |           moving of a card
-//   |
-//   +- Card: card object which manages location (via parent) and
-//   |        sprite, animation of card
-//   |
-//   +- Stack: pile of cards acting as a container of cards. Manages
-//       |     flipping of cards as well as positioning. Base class.
-//       |
-//       +- VisibleStack: Stack laid out such that all card values
-//       |                are visible.
-//       |
-//       +- TopStack: Only top card visible. Used for the "complete"
-//       |            pile e.g. in Solitaire.
-//       |
-//       +- DeckStack: top $n cards visible to the right, with $m
-//                     visible on top the main stack to the left.
 
 class CardPosition {
     
