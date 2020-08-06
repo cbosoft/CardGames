@@ -74,7 +74,10 @@ class Table: SKNode {
         }
 
         if let card = self.selected_card {
-            destination_stack!.add_card(self.selected_card!)
+            if !destination_stack.add_card(self.selected_card!) {
+                // move failed: return to source
+                self.source_stack?.add_card(self.selected_card!)
+            }
             card.run(action: SKAction.scale(to: 1.0, duration: 0.1))
         }
         
