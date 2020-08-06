@@ -9,27 +9,26 @@
 import SpriteKit
 import Foundation
 
-
-class CardPosition {
+class CardPosition: SKNode {
     
-    let size = Card.size
-    var position: CGPoint
-    var z: CGFloat = 0.0
+    private var size: CGSize
     
     init(x: CGFloat, y: CGFloat) {
+        self.size = Card.size
+        super.init()
         self.position = CGPoint(x: x, y: y)
     }
     
-    func set_position(_ x: CGFloat, _ y: CGFloat) {
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func set_position(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat? = nil) {
         self.position = CGPoint(x: x, y: y)
-    }
-    
-    func set_position(fromPoint point: CGPoint) {
-        self.position = point
-    }
-    
-    func get_position() -> CGPoint {
-        return self.position
+        
+        if let z = z {
+            self.zPosition = z
+        }
     }
     
     func get_x() -> CGFloat {
@@ -54,11 +53,11 @@ class CardPosition {
         
         let sx = self.get_x()
         let sy = self.get_y()
-        let shw = self.get_w()*0.5
-        let shh = self.get_h()*0.5
+        let sw = self.get_w()
+        let sh = self.get_h()
         
-        if px > (sx - shw) && px < (sx + shw) && py > (sy - shh) && py < (sy + shh) {
-            return self.z
+        if px > sx && px < (sx + sw) && py > sy && py < (sy + sh) {
+            return self.zPosition
         }
         else {
             return nil
