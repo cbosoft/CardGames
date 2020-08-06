@@ -9,15 +9,6 @@
 import SpriteKit
 import Foundation
 
-var deck: [(String, Int)] = []
-func filldeck() {
-    for suit in ["Hearts", "Diamonds", "Clubs", "Spades"] {
-        for value in 1..<14 {
-            deck.append( (suit, value) )
-        }
-    }
-}
-
 class Card: CardPosition {
     
     static var size = CGSize(width: 40, height: 60)
