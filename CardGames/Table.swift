@@ -47,6 +47,7 @@ class Table: SKNode {
     func try_move_card(here: CGPoint) {
         // Update card's position, if picked up
         if let card = self.selected_card {
+            // center card on pointer
             let newPos = CGPoint(
                 x: here.x - Card.size.width/2,
                 y: here.y - Card.size.height/2)

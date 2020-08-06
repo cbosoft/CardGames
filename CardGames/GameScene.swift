@@ -16,8 +16,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         // called when view is opened?
         
-        let hSize = CGSize(width: self.size.width*0.5, height: self.size.height*0.5)
-        self.table = SolitaireTable(size: hSize)
+        self.table = SolitaireTable(size: size)
         self.addChild(table!)
     }
     

@@ -18,7 +18,7 @@ class SuitedTopStack: TopStack {
         let suitlabel = SKLabelNode(text: suit)
         let w = Card.size.width
         let h = Card.size.height
-        suitlabel.position = CGPoint(x: x + 0.5*w, y: y + 0.5*h)
+        suitlabel.position = CGPoint(x: 0.5*w, y: 0.5*h)
         suitlabel.verticalAlignmentMode = .center
         suitlabel.horizontalAlignmentMode = .center
         suitlabel.fontSize = Card.size.height/5

@@ -21,10 +21,12 @@ class DeckStack: CardStack {
         rightnode.fillColor = .clear
         rightnode.strokeColor = .lightGray
         rightnode.lineWidth = 1.0
-        
-        rightnode.position = CGPoint(x: x + 2*spacing /* Why 2*? */, y: y)
-        
         self.addChild(rightnode)
+        
+        // position relative to main deck
+        rightnode.position = CGPoint(x: self.spacing, y: 0)
+        
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,11 +70,28 @@ class DeckStack: CardStack {
             pen.isHidden = false
             
             let last = self.cards[self.cards.count-1]
-            last.set_position(x+self.spacing, y)
+            last.set_position(x + self.spacing, y)
             last.set_flipped(true)
             last.isHidden = false
             break
             
+        }
+    }
+    
+    override func point_hits(pt: CGPoint) -> CGFloat? {
+        let px = pt.x
+        let py = pt.y
+        
+        let sx = self.get_x() + self.spacing
+        let sy = self.get_y()
+        let sw = self.get_w()
+        let sh = self.get_h()
+        
+        if px > sx && px < (sx + sw) && py > sy && py < (sy + sh) {
+            return self.zPosition
+        }
+        else {
+            return nil
         }
     }
 }

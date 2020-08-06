@@ -11,11 +11,10 @@ import Foundation
 class VisibleStack: CardStack {
     override func display_cards() {
         // simple display func: cards one on top of another
-        let x = self.get_x()*2
-        var y = self.get_y()*2
+        let x = self.get_x()
+        var y = self.get_y()
         var stack_height: CGFloat = 0.0
         for card in self.cards {
-            print(card, card.isHidden)
             let pos = CGPoint(x: x, y: y)
             y -= 10.0
             card.position = pos

@@ -11,7 +11,7 @@ import Foundation
 
 class CardPosition: SKNode {
     
-    private var size: CGSize
+    var size: CGSize
     
     init(x: CGFloat, y: CGFloat) {
         self.size = Card.size
@@ -48,15 +48,8 @@ class CardPosition: SKNode {
     }
     
     func point_hits(pt: CGPoint) -> CGFloat? {
-        let px = pt.x
-        let py = pt.y
-        
-        let sx = self.get_x()
-        let sy = self.get_y()
-        let sw = self.get_w()
-        let sh = self.get_h()
-        
-        if px > sx && px < (sx + sw) && py > sy && py < (sy + sh) {
+        let r = CGRect(origin: self.position, size: self.size)
+        if r.contains(pt) {
             return self.zPosition
         }
         else {

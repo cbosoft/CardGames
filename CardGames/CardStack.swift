@@ -18,7 +18,9 @@ class CardStack: CardPosition {
     
     override init(x: CGFloat, y: CGFloat) {
         super.init(x: x, y: y)
-        let border = SKShapeNode(rect: CGRect(x: x, y: y, width: Card.size.width, height: Card.size.height))
+        let border = SKShapeNode(rect:
+            CGRect(origin: CGPoint.zero, // position relative to /this/ node
+                   size: self.size))
         border.fillColor = .clear
         border.strokeColor = .white
         border.lineWidth = 1.0
@@ -63,7 +65,7 @@ class CardStack: CardPosition {
         // simple display func: cards one on top of another
         var stack_height: CGFloat = 0.0
         for card in self.cards {
-            card.position = self.position
+            card.position = CGPoint.zero
             card.zPosition = stack_height
             stack_height += 1
         }
