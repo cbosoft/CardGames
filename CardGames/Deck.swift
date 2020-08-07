@@ -41,6 +41,26 @@ class Deck: SKNode {
         return card
     }
     
+    static func next_in_sequence(value: String) -> String? {
+        for i in 0..<(Deck.values.count-1) {
+            let v = Deck.values[i]
+            if value == v {
+                return Deck.values[i+1]
+            }
+        }
+        return nil
+    }
+    
+    static func prev_in_sequence(value: String) -> String? {
+        for i in 1..<Deck.values.count {
+            let v = Deck.values[i]
+            if value == v {
+                return Deck.values[i-1]
+            }
+        }
+        return nil
+    }
+    
     static func is_red(suit: String) -> Bool {
         return suit == "Diamonds" || suit == "Hearts"
     }
