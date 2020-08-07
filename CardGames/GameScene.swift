@@ -63,6 +63,12 @@ class GameScene: SKScene {
         //    if let label = self.label {
         //        label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
         //    }
+        case 0x0C:
+            exit(0)
+            
+        case 0x0F:
+            self.table?.redeal()
+            
         default:
             self.table?.show_help()
         }
