@@ -48,6 +48,7 @@ class SolitaireTable: Table {
             for _ in 0..<n {
                 self.visible_stacks[i].add_card(deck.draw())
             }
+            self.visible_stacks[i].cards.last!.set_flipped(true)
         }
         
         for _ in 0..<self.deck.to_draw.count {
@@ -55,6 +56,7 @@ class SolitaireTable: Table {
             self.deck_stack.cards.append(card)
         }
         self.deck_stack.display_cards()
+        self.deck_stack.post_move()
         
     }
     
