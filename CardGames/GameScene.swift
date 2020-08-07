@@ -12,11 +12,12 @@ import GameplayKit
 class GameScene: SKScene {
     
     var table: Table? = nil
+    var TableType: Table.Type = SolitaireTable.self
     
     override func didMove(to view: SKView) {
         // called when view is opened?
         
-        self.table = SolitaireTable(size: size)
+        self.table = self.TableType.init(size: size)
         self.addChild(table!)
     }
     

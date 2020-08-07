@@ -48,9 +48,14 @@ class MenuScene : SKScene {
     }
     
     func solitaire_clicked() {
+        self.show_game(game_type: SolitaireTable.self)
+    }
+    
+    func show_game(game_type: Table.Type) {
         if let view = self.view {
-            if let scene = SKScene(fileNamed: "GameScene") {
+            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
                 self.run(SKAction.fadeOut(withDuration: 0.3))
+                scene.TableType = game_type
                 scene.scaleMode = .aspectFit
                 scene.run(SKAction.fadeOut(withDuration: 0.0))
                 view.presentScene(scene)
