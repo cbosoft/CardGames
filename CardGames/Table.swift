@@ -33,11 +33,11 @@ class Table: SKNode {
         self.addChild(self.help)
         
         let help_text_redeal = SKLabelNode(text: "r: redeal")
-        help_text_redeal.position = CGPoint(x: -20.0, y: help_text_redeal.fontSize)
+        help_text_redeal.position = CGPoint(x: 0.0, y: help_text_redeal.fontSize)
         help_text_redeal.verticalAlignmentMode = .center
         self.help.addChild(help_text_redeal)
         let help_text_quit = SKLabelNode(text: "q: quit")
-        help_text_quit.position = CGPoint(x: -20.0, y: -help_text_quit.fontSize)
+        help_text_quit.position = CGPoint(x: 0.0, y: -help_text_quit.fontSize)
         help_text_quit.verticalAlignmentMode = .center
         self.help.addChild(help_text_quit)
     }
