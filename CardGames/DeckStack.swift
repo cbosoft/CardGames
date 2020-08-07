@@ -152,5 +152,10 @@ class DeckStack: CardStack {
         return false
     }
     
+    override func reset() {
+        self.hidden_pile = []
+        self.flipped_pile = []
+    }
+    
     
 }

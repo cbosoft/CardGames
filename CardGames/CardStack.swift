@@ -35,6 +35,10 @@ class CardStack: CardPosition {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func reset() {
+        self.cards = []
+    }
+    
     @discardableResult func add_card(_ card: CardPosition) -> Bool {
         if let card = card as? Card {
             self.cards.append(card)

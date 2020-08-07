@@ -44,4 +44,8 @@ class Deck: SKNode {
     static func is_red(suit: String) -> Bool {
         return suit == "Diamonds" || suit == "Hearts"
     }
+    
+    func reset() {
+        self.to_draw = self.cards
+    }
 }
