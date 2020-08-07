@@ -93,7 +93,6 @@ class DeckStack: CardStack {
     }
     
     func next_card() {
-        print("NEXT CARD")
         if self.hidden_pile.count > 0 {
             let idx = self.flipped_pile.count// > 0 ? self.flipped_pile.count - 1 : 0
             for _ in 0..<self.number_flipped {
@@ -143,7 +142,6 @@ class DeckStack: CardStack {
     }
     
     @discardableResult override func add_card(_ card: CardPosition) -> Bool {
-        print("ADDING CARD")
         if let card = card as? Card {
             if card == self.last_taken {
                 self.flipped_pile.append(card)
