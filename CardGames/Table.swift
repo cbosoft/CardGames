@@ -16,8 +16,15 @@ class Table: SKNode {
     var selected_card: CardPosition? = nil
     var source_stack: CardStack? = nil
     
+    var big_label: SKLabelNode
+    
     override init() {
+        self.big_label = SKLabelNode()
+        self.big_label.horizontalAlignmentMode = .center
+        self.big_label.verticalAlignmentMode = .center
         super.init()
+        self.big_label.run(SKAction.fadeOut(withDuration: 0.0))
+        self.addChild(self.big_label)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -98,6 +105,22 @@ class Table: SKNode {
         self.selected_card = nil
         self.source_stack = nil
         
+    
+    func show_big_label(_ text: String? = nil) {
+        let centre: CGPoint
+        if let scene = self.scene {
+            let size = scene.size
+            centre = CGPoint(x: size.width*0.5, y: size.height*0.5)
+        }
+        else {
+            print("Warning: Could not find scene in which to centre text.")
+            centre = CGPoint(x: 500, y: 300)
+        }
+        self.big_label.text = text
+        self.big_label.position = centre
+        self.big_label.color = .white
+        self.big_label.run(SKAction.fadeIn(withDuration: 1.0))
+    }
     }
     
 }
