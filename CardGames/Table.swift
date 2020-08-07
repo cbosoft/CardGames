@@ -107,12 +107,14 @@ class Table: SKNode {
                     }
                 }
             }
-        }
-
-        if let card = self.selected_card {
-            if !destination_stack.add_card(self.selected_card!) {
+            
+            if destination_stack == self.source_stack! {
+                self.source_stack!.put_card(card)
+            }
+            else if !destination_stack.add_card(self.selected_card!) {
                 // move failed: return to source
-                self.source_stack!.add_card(self.selected_card!)
+                print("move failed: return to source")
+                self.source_stack!.put_card(self.selected_card!)
                 destination_stack = self.source_stack!
             }
             

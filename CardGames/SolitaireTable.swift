@@ -58,9 +58,11 @@ class SolitaireTable: Table {
         for i in 0..<self.visible_stacks.count {
             let n = i+1
             for _ in 0..<n {
-                self.visible_stacks[i].add_card(deck.draw())
+                self.visible_stacks[i].put_card(deck.draw())
             }
-            self.visible_stacks[i].cards.last!.set_flipped(true)
+            //self.visible_stacks[i].cards.last!.set_flipped(true)
+            self.visible_stacks[i].display_cards()
+            self.visible_stacks[i].post_move()
         }
         
         for _ in 0..<self.deck.to_draw.count {

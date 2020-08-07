@@ -137,8 +137,14 @@ class DeckStack: CardStack {
         return nil
     }
     
-    func put_card(_ card: Card) {
-        self.hidden_pile.append(card)
+    override func put_card(_ card: CardPosition) {
+        if let card = card as? Card {
+            self.hidden_pile.append(card)
+        }
+        else {
+            fatalError("Cannot add CardPosition to this stack")
+        }
+        self.display_cards()
     }
     
     @discardableResult override func add_card(_ card: CardPosition) -> Bool {

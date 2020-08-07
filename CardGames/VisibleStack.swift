@@ -30,6 +30,23 @@ class VisibleStack: CardStack {
         }
     }
     
+    override func put_card(_ card: CardPosition) {
+        print("PUTTING")
+        if let card = card as? Card {
+            self.cards.append(card)
+        }
+        else if let stack = card as? VisibleStack {
+            print("PUTTING STACK")
+            for card in stack.cards {
+                self.add_card(card)
+            }
+        }
+        else {
+            fatalError("cannot add CardPosition to this stack")
+        }
+        self.display_cards()
+    }
+    
     override func try_take(point: CGPoint) -> CardPosition? {
         var selected_z: CGFloat = -1.0
         var return_from: Int? = nil

@@ -50,6 +50,16 @@ class CardStack: CardPosition {
         }
     }
     
+    func put_card(_ card: CardPosition) {
+        if let card = card as? Card {
+            self.cards.append(card)
+        }
+        else {
+            fatalError("cannot add CardStack to this stack")
+        }
+        self.display_cards()
+    }
+    
     func remove_card(_ card: Card) throws {
         var index: Int? = nil
         for i in 0..<self.cards.count {
