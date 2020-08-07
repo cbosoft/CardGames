@@ -79,4 +79,11 @@ class CardStack: CardPosition {
             stack_height += 1
         }
     }
+    
+    func post_move() {
+        // called after a card from this stack has been moved away
+        if let last = self.cards.last {
+            last.set_flipped(true)
+        }
+    }
 }
