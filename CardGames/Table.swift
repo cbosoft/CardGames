@@ -15,6 +15,7 @@ class Table: SKNode {
     var card_stacks: [CardStack] = []
     var selected_card: CardPosition? = nil
     var source_stack: CardStack? = nil
+    var help: SKShapeNode
     
     var big_label: SKLabelNode
     
@@ -22,9 +23,24 @@ class Table: SKNode {
         self.big_label = SKLabelNode()
         self.big_label.horizontalAlignmentMode = .center
         self.big_label.verticalAlignmentMode = .center
+        self.help = SKShapeNode(rectOf: CGSize(width: 200, height: 100), cornerRadius: 5.0)
+        self.help.fillColor = .black
+        self.help.strokeColor = .clear
         super.init()
         self.big_label.run(SKAction.fadeOut(withDuration: 0.0))
         self.addChild(self.big_label)
+        self.help.run(SKAction.fadeOut(withDuration: 0.0))
+        self.addChild(self.help)
+        
+        let help_text_redeal = SKLabelNode(text: "r: redeal")
+        help_text_redeal.position = CGPoint(x: -20.0, y: help_text_redeal.fontSize)
+        help_text_redeal.verticalAlignmentMode = .center
+        self.help.addChild(help_text_redeal)
+        let help_text_quit = SKLabelNode(text: "q: quit")
+        help_text_quit.position = CGPoint(x: -20.0, y: -help_text_quit.fontSize)
+        help_text_quit.verticalAlignmentMode = .center
+        self.help.addChild(help_text_quit)
+    }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -145,6 +161,24 @@ class Table: SKNode {
         self.big_label.color = .white
         self.big_label.run(SKAction.fadeIn(withDuration: 1.0))
     }
+    
+    func show_help() {
+        let centre: CGPoint
+        if let scene = self.scene {
+            let size = scene.size
+            centre = CGPoint(x: size.width*0.5, y: size.height*0.25)
+            self.help.fillColor = scene.backgroundColor
+        }
+        else {
+            print("Warning: Could not find scene in which to centre text.")
+            centre = CGPoint(x: 500, y: 300)
+        }
+        self.help.position = centre
+        self.help.zPosition = 1000
+        self.help.run(SKAction.fadeIn(withDuration: 0.5))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.help.run(SKAction.fadeOut(withDuration: 0.5))
+        }
     }
     
 }
