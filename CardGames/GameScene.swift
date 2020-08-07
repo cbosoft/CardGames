@@ -31,12 +31,41 @@ class GameScene: SKScene {
     
     var table: Table? = nil
     var TableType: Table.Type = SolitaireTable.self
+    var help: SKNode? = nil
+    let help_text: [String] = ["r: Re-deal", "m: Menu", "q: Quit"]
     
     override func didMove(to view: SKView) {
         // called when view is opened?
         
         self.table = self.TableType.init(size: size)
         self.addChild(table!)
+    }
+    
+    func init_help() {
+        if self.help != nil {
+            return
+        }
+        
+        let help = SKShapeNode()
+        let dy: CGFloat = 35
+        print(dy)
+        help.path = CGPath(roundedRect: CGRect(x: -0.5*dy, y: 0, width: 200, height: CGFloat(self.help_text.count+1)*dy), cornerWidth: 5, cornerHeight: 5, transform: nil)
+        help.position = CGPoint(x: self.size.width*0.1, y: self.size.height*0.25)
+        help.strokeColor = help.fillColor
+        
+        var y: CGFloat = dy*0.5
+        for text in self.help_text.reversed() {
+            let label = SKLabelNode(text: text)
+            label.position = CGPoint(x: 0.0, y: y)
+            label.zPosition = 210
+            label.horizontalAlignmentMode = .left
+            y += dy
+            help.addChild(label)
+        }
+        
+        help.run(SKAction.fadeOut(withDuration: 0.0))
+        self.addChild(help)
+        self.help = help
     }
     
     
@@ -103,6 +132,18 @@ class GameScene: SKScene {
         }
     }
     
+    func show_help() {
+        if self.help == nil {
+            self.init_help()
+        }
+        
+        let help = self.help!
+        help.run(SKAction.fadeIn(withDuration: 0.1))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            help.run(SKAction.fadeOut(withDuration: 0.5))
+        }
+    }
+    
     
     override func keyDown(with event: NSEvent) {
         switch event.keyCode {
@@ -120,7 +161,7 @@ class GameScene: SKScene {
             self.redeal()
             
         default:
-            self.table?.show_help()
+            self.show_help()
         }
     }
     
