@@ -52,8 +52,7 @@ class SolitaireTable: Table {
         }
         
         for _ in 0..<self.deck.to_draw.count {
-            let card = self.deck.draw()
-            self.deck_stack.cards.append(card)
+            self.deck_stack.put_card(self.deck.draw())
         }
         self.deck_stack.display_cards()
         self.deck_stack.post_move()
