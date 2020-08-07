@@ -10,7 +10,7 @@ import Foundation
 
 class VisibleStack: CardStack {
     
-    private let maximum_offset: CGFloat = 20.0
+    private let maximum_offset: CGFloat = 35.0
     
     
     @discardableResult override func add_card(_ card: CardPosition) -> Bool {
