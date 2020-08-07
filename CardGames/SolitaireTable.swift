@@ -74,6 +74,15 @@ class SolitaireTable: Table {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func check_has_won() -> Bool {
+        for stack in self.top_stacks {
+            if stack.cards.count < 13 {
+                return false
+            }
+        }
+        return true
+    }
+    
     //override func try_pick_up_card(here: CGPoint) {
     //    // TODO
     //}
