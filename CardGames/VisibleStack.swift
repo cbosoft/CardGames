@@ -56,8 +56,15 @@ class VisibleStack: CardStack {
             let rv = VisibleStack(x: sx, y: sy, has_border: false)
             
             // move the cards over to the new stack
+            for i in return_from..<self.cards.count {
+                let card = self.cards[i]
+                if !card.is_flipped() {
+                    return nil
+                }
+                rv.cards.append(card)
+            }
+            
             for _ in return_from..<self.cards.count {
-                rv.cards.append(self.cards[return_from])
                 self.cards.remove(at: return_from)
             }
             
