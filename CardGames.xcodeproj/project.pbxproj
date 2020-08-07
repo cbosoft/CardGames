@@ -27,6 +27,9 @@
 		8358785924DB169200A3AFCA /* TopStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358785824DB169200A3AFCA /* TopStack.swift */; };
 		8358785B24DB179500A3AFCA /* SuitedTopStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358785A24DB179500A3AFCA /* SuitedTopStack.swift */; };
 		8358785F24DD7EED00A3AFCA /* AlternatingColourVisibleStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358785E24DD7EED00A3AFCA /* AlternatingColourVisibleStack.swift */; };
+		8358786124DD905100A3AFCA /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8358786024DD905100A3AFCA /* MenuScene.sks */; };
+		8358786324DD919700A3AFCA /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358786224DD919700A3AFCA /* MenuScene.swift */; };
+		8358786524DD926D00A3AFCA /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358786424DD926D00A3AFCA /* MenuButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,9 @@
 		8358785C24DC017000A3AFCA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8358785D24DC019C00A3AFCA /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		8358785E24DD7EED00A3AFCA /* AlternatingColourVisibleStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternatingColourVisibleStack.swift; sourceTree = "<group>"; };
+		8358786024DD905100A3AFCA /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		8358786224DD919700A3AFCA /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		8358786424DD926D00A3AFCA /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,9 @@
 			children = (
 				8358781524D9C9A700A3AFCA /* AppDelegate.swift */,
 				8358781724D9C9A700A3AFCA /* GameScene.sks */,
+				8358786024DD905100A3AFCA /* MenuScene.sks */,
+				8358786224DD919700A3AFCA /* MenuScene.swift */,
+				8358786424DD926D00A3AFCA /* MenuButton.swift */,
 				8358781924D9C9A700A3AFCA /* Actions.sks */,
 				8358781B24D9C9A700A3AFCA /* GameScene.swift */,
 				8358784724DAAAAB00A3AFCA /* Card.swift */,
@@ -279,6 +288,7 @@
 				8358781824D9C9A700A3AFCA /* GameScene.sks in Resources */,
 				8358782024D9C9AA00A3AFCA /* Assets.xcassets in Resources */,
 				8358781A24D9C9A700A3AFCA /* Actions.sks in Resources */,
+				8358786124DD905100A3AFCA /* MenuScene.sks in Resources */,
 				8358782324D9C9AA00A3AFCA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +326,8 @@
 				8358784F24DAFB6600A3AFCA /* VisibleStack.swift in Sources */,
 				8358785724DB0D4300A3AFCA /* DeckStack.swift in Sources */,
 				8358784A24DAE4C800A3AFCA /* CardPosition.swift in Sources */,
+				8358786524DD926D00A3AFCA /* MenuButton.swift in Sources */,
+				8358786324DD919700A3AFCA /* MenuScene.swift in Sources */,
 				8358784824DAAAAB00A3AFCA /* Card.swift in Sources */,
 				8358785B24DB179500A3AFCA /* SuitedTopStack.swift in Sources */,
 			);
