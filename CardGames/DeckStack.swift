@@ -139,7 +139,12 @@ class DeckStack: CardStack {
     
     override func put_card(_ card: CardPosition) {
         if let card = card as? Card {
-            self.hidden_pile.append(card)
+            if card.is_flipped() {
+                self.flipped_pile.append(card)
+            }
+            else {
+                self.hidden_pile.append(card)
+            }
         }
         else {
             fatalError("Cannot add CardPosition to this stack")
