@@ -55,7 +55,7 @@ class VisibleStack: CardStack {
         }
         else if let stack = card as? VisibleStack {
             for card in stack.cards {
-                self.add_card(card)
+                self.cards.append(card)
             }
         }
         else {
