@@ -49,6 +49,12 @@ class SolitaireTable: Table {
             self.addChild(top_stack)
         }
         
+        self.redeal()
+    }
+    
+    override func redeal() {
+        super.redeal()
+        
         for i in 0..<self.visible_stacks.count {
             let n = i+1
             for _ in 0..<n {
@@ -62,7 +68,6 @@ class SolitaireTable: Table {
         }
         self.deck_stack.display_cards()
         self.deck_stack.post_move()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

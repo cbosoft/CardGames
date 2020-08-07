@@ -41,6 +41,14 @@ class Table: SKNode {
         help_text_quit.verticalAlignmentMode = .center
         self.help.addChild(help_text_quit)
     }
+    
+    func redeal () {
+        for deck in self.decks {
+            deck.reset()
+        }
+        for stack in self.card_stacks {
+            stack.reset()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
