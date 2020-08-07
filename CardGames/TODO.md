@@ -1,3 +1,4 @@
 #  TODO
- - update deck stack display func
  - add gameplay rules
+ - add card border
+ - fix card value display
