@@ -67,5 +67,8 @@ class Deck: SKNode {
     
     func reset() {
         self.to_draw = self.cards
+        for card in self.cards {
+            card.set_flipped(false)
+        }
     }
 }
