@@ -82,6 +82,7 @@ class Card: CardPosition {
             self.number_label.isHidden = true
             self.bg.fillColor = .gray
         }
+        self.flipped = v
     }
     
     func is_flipped() -> Bool {
