@@ -11,19 +11,24 @@ import Foundation
 
 class Table: SKNode {
     
-    var deck: Deck = Deck()
+    var decks: [Deck] = []
     var card_stacks: [CardStack] = []
     var selected_card: CardPosition? = nil
     var source_stack: CardStack? = nil
     
     override init() {
         super.init()
-        self.addChild(self.deck)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func add_deck(_ deck: Deck) {
+        self.decks.append(deck)
+        self.addChild(deck)
+    }
+    
     
     func try_pick_up_card(here: CGPoint) {
         // Pick up a card

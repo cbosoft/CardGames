@@ -14,6 +14,11 @@ class SolitaireTable: Table {
     private var visible_stacks: [VisibleStack] = []
     private var top_stacks: [SuitedTopStack] = []
     private var deck_stack: DeckStack
+    private var deck: Deck {
+        get {
+            return self.decks[0]
+        }
+    }
     
     init(size: CGSize) {
         
@@ -22,6 +27,7 @@ class SolitaireTable: Table {
         let toprow_y: CGFloat = 0.75*size.height
         self.deck_stack = DeckStack(x: margin, y: toprow_y, spacing: spacing)
         super.init()
+        self.add_deck(Deck())
         self.addChild(self.deck_stack)
         self.card_stacks.append(deck_stack)
         
