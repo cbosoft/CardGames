@@ -14,44 +14,44 @@ class Card: CardPosition {
     static var size = CGSize(width: 80, height: 120)
     
     var suit: String
-    var number: Int
+    var value: String
     private var flipped: Bool = false
     
     private let suit_label: SKLabelNode
-    private let number_label: SKLabelNode
+    private let value_label: SKLabelNode
     private let bg: SKShapeNode
     
-    init(x: CGFloat = 0, y: CGFloat = 0, suit: String, number: Int) {
+    init(x: CGFloat = 0, y: CGFloat = 0, suit: String, value: String) {
         self.suit = suit
-        self.number = number
+        self.value = value
         
         self.suit_label = SKLabelNode(text: suit)
-        self.number_label = SKLabelNode(text: String(format: "%i", number))
+        self.value_label = SKLabelNode(text: value)
         
         // white rounded rectangle
         self.bg = SKShapeNode(
             rect: CGRect(
                 origin: CGPoint(x: 0, y: 0),
                 size: Card.size),
-            cornerRadius: 5.0)
+            cornerRadius: 0.0)
         self.bg.fillColor = SKColor.white
-        self.bg.strokeColor = .white
-        self.bg.lineWidth = 2.0
+        self.bg.strokeColor = .black
+        self.bg.lineWidth = 1.0
         
         super.init(x: x, y: y)
         
         self.addChild(self.suit_label)
-        self.addChild(self.number_label)
+        self.addChild(self.value_label)
         self.addChild(self.bg)
         
         let isred = Deck.is_red(suit: suit)
         let font_name = NSFont.boldSystemFont(ofSize: Card.size.height/7).fontName
         
-        self.number_label.position = CGPoint(x: 5.0, y: Card.size.height - 5)
-        self.number_label.fontName = font_name
-        self.number_label.fontColor = isred ? .red : .black
-        self.number_label.horizontalAlignmentMode = .left
-        self.number_label.verticalAlignmentMode = .top
+        self.value_label.position = CGPoint(x: 5.0, y: Card.size.height - 5)
+        self.value_label.fontName = font_name
+        self.value_label.fontColor = isred ? .red : .black
+        self.value_label.horizontalAlignmentMode = .left
+        self.value_label.verticalAlignmentMode = .top
         
         self.suit_label.position = CGPoint(x: Card.size.width - 5.0, y: 5.0)
         self.suit_label.fontName = font_name
@@ -74,12 +74,12 @@ class Card: CardPosition {
     func set_flipped(_ v: Bool) {
         if v {
             self.suit_label.isHidden = false
-            self.number_label.isHidden = false
+            self.value_label.isHidden = false
             self.bg.fillColor = .white
         }
         else {
             self.suit_label.isHidden = true
-            self.number_label.isHidden = true
+            self.value_label.isHidden = true
             self.bg.fillColor = .gray
         }
         self.flipped = v
@@ -94,7 +94,7 @@ class Card: CardPosition {
     }
     
     static func == (lhs: Card, rhs: Card) -> Bool {
-        return lhs.number == rhs.number && lhs.suit == rhs.suit
+        return lhs.value == rhs.value && lhs.suit == rhs.suit
     }
     
     override func tap() {

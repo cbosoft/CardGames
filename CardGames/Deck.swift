@@ -11,6 +11,7 @@ import Foundation
 class Deck: SKNode {
     
     static let suits: [String] = ["Spades", "Clubs", "Diamonds", "Hearts"]
+    static let values: [String] = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
     
     var cards: [Card] = []
     var to_draw: [Card] = []
@@ -19,8 +20,8 @@ class Deck: SKNode {
         super.init()
         
         for suit in Deck.suits {
-            for number in 1..<14 {
-                let card = Card(suit: suit, number: number)
+            for value in Deck.values {
+                let card = Card(suit: suit, value: value)
                 self.cards.append(card)
                 self.to_draw.append(card)
                 self.addChild(card)
