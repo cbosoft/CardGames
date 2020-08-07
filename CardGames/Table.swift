@@ -49,6 +49,8 @@ class Table: SKNode {
         for stack in self.card_stacks {
             stack.reset()
         }
+        self.hide_big_label()
+        self.show_decks_and_stacks()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -155,6 +157,18 @@ class Table: SKNode {
         }
     }
     
+    func show_decks_and_stacks() {
+        for stack in self.card_stacks {
+            stack.run(SKAction.fadeIn(withDuration: 0.5))
+        }
+        for deck in self.decks {
+            deck.run(SKAction.fadeIn(withDuration: 1))
+        }
+    }
+    
+    func hide_big_label() {
+        self.big_label.run(SKAction.fadeOut(withDuration: 0.5))
+    }
     func show_big_label(_ text: String? = nil) {
         let centre: CGPoint
         if let scene = self.scene {
