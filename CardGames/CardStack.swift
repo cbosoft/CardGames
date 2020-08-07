@@ -26,6 +26,7 @@ class CardStack: CardPosition {
             border.fillColor = .clear
             border.strokeColor = .white
             border.lineWidth = 1.0
+            border.zPosition = -1.0
             self.addChild(border)
         }
     }
