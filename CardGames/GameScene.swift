@@ -71,6 +71,19 @@ class GameScene: SKScene {
         }
     }
     
+    func back_to_menu() {
+        if let view = self.view {
+            if let scene = SKScene(fileNamed: "MenuScene") {
+                self.run(SKAction.fadeOut(withDuration: 0.3))
+                scene.scaleMode = .aspectFit
+                scene.run(SKAction.fadeOut(withDuration: 0.0))
+                view.presentScene(scene)
+                scene.run(SKAction.fadeIn(withDuration: 0.3))
+            }
+            
+        }
+    }
+    
     
     override func keyDown(with event: NSEvent) {
         switch event.keyCode {
@@ -78,6 +91,9 @@ class GameScene: SKScene {
         //    if let label = self.label {
         //        label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
         //    }
+        case 0x2E:
+            self.back_to_menu()
+            
         case 0x0C:
             self.quit()
             
