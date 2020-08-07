@@ -71,7 +71,12 @@ class GameScene: SKScene {
     
     func touchDown(atPoint pos : CGPoint) {
         if let table = self.table {
-            table.try_pick_up_card(here: pos)
+            if table.big_label.alpha == 1.0 {
+                self.show_help()
+            }
+            else {
+                table.try_pick_up_card(here: pos)
+            }
         }
     }
     
