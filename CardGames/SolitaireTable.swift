@@ -20,13 +20,13 @@ class SolitaireTable: Table {
         }
     }
     
-    init(size: CGSize) {
+    required init(size: CGSize) {
         
         let spacing: CGFloat = size.width/8.0
         let margin: CGFloat = spacing*2.0/3.0
         let toprow_y: CGFloat = 0.75*size.height
         self.deck_stack = DeckStack(x: margin, y: toprow_y, spacing: spacing)
-        super.init()
+        super.init(size: size)
         self.add_deck(Deck())
         self.addChild(self.deck_stack)
         self.card_stacks.append(deck_stack)

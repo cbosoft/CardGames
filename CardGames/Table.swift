@@ -19,7 +19,7 @@ class Table: SKNode {
     
     var big_label: SKLabelNode
     
-    override init() {
+    required init(size: CGSize) {
         self.big_label = SKLabelNode()
         self.big_label.horizontalAlignmentMode = .center
         self.big_label.verticalAlignmentMode = .center
