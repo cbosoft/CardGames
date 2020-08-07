@@ -16,15 +16,18 @@ class CardStack: CardPosition {
     
     var cards: [Card] = []
     
-    override init(x: CGFloat, y: CGFloat) {
+    init(x: CGFloat, y: CGFloat, has_border: Bool = true) {
         super.init(x: x, y: y)
-        let border = SKShapeNode(rect:
-            CGRect(origin: CGPoint.zero, // position relative to /this/ node
-                   size: self.size))
-        border.fillColor = .clear
-        border.strokeColor = .white
-        border.lineWidth = 1.0
-        self.addChild(border)
+        
+        if has_border {
+            let border = SKShapeNode(rect:
+                CGRect(origin: CGPoint.zero, // position relative to /this/ node
+                    size: self.size))
+            border.fillColor = .clear
+            border.strokeColor = .white
+            border.lineWidth = 1.0
+            self.addChild(border)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
