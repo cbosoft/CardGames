@@ -1,5 +1,4 @@
 #  TODO
-
- - VisibleStacks to take cards added to bottom
- - Be able to move stacks of cards (VisibleSubStack?)
- Perhaps this would be best achieved by macking visible stack a linked list instead of just a list?
+ - table to recognise difference between a click/tap and a drag
+ - update deck stack display func
+ - add gameplay rules
