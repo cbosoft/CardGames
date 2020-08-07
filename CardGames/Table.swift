@@ -49,7 +49,7 @@ class Table: SKNode {
                 y: here.y - Card.size.height/2)
             card.position = newPos
             if let card = card as? VisibleStack {
-                card.display_cards()
+                card.display_cards(base_z: 100)
             }
         }
     }
