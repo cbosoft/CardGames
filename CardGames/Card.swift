@@ -15,6 +15,12 @@ class Card: CardPosition {
     
     var suit: String
     var value: String
+    
+    var colour: String {
+        get {
+            return Deck.is_red(suit: self.suit) ? "Red" : "Black"
+        }
+    }
     private var flipped: Bool = false
     
     private let suit_label: SKLabelNode
