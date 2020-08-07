@@ -56,6 +56,21 @@ class GameScene: SKScene {
         self.touchUp(atPoint: event.location(in: self))
     }
     
+    func quit() {
+        self.run(SKAction.fadeOut(withDuration: 0.5))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            exit(0)
+        }
+    }
+    
+    func redeal() {
+        self.table?.run(SKAction.fadeOut(withDuration: 0.2))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.table?.redeal()
+            self.table?.run(SKAction.fadeIn(withDuration: 0.2))
+        }
+    }
+    
     
     override func keyDown(with event: NSEvent) {
         switch event.keyCode {
@@ -64,10 +79,10 @@ class GameScene: SKScene {
         //        label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
         //    }
         case 0x0C:
-            exit(0)
+            self.quit()
             
         case 0x0F:
-            self.table?.redeal()
+            self.redeal()
             
         default:
             self.table?.show_help()
