@@ -64,7 +64,7 @@ class GameScene: SKScene {
         //        label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
         //    }
         default:
-            print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
+            self.table?.show_help()
         }
     }
     
