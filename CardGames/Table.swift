@@ -91,19 +91,18 @@ class Table: SKNode {
     }
     
     func try_drop_card(here: CGPoint) {
+
+        if let card = self.selected_card {
         
-        if self.selected_card == nil {
-            return
-        }
-        
-        var selected_z: CGFloat = -1.0
-        var destination_stack: CardStack = self.source_stack!
-        for stack in self.card_stacks {
-            if let z = stack.point_hits(pt: here) {
-                if z > selected_z {
-                    if ObjectIdentifier(stack) != ObjectIdentifier(self.selected_card!) {
-                        destination_stack = stack
-                        selected_z = z
+            var selected_z: CGFloat = -1.0
+            var destination_stack: CardStack = self.source_stack!
+            for stack in self.card_stacks {
+                if let z = stack.point_hits(pt: here) {
+                    if z > selected_z {
+                        if ObjectIdentifier(stack) != ObjectIdentifier(self.selected_card!) {
+                            destination_stack = stack
+                            selected_z = z
+                        }
                     }
                 }
             }
