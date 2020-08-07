@@ -105,6 +105,21 @@ class Table: SKNode {
         self.selected_card = nil
         self.source_stack = nil
         
+        game_over_check()
+    }
+    
+    func check_has_won() -> Bool {
+        fatalError("Table.check_has_won() has not been implemented")
+    }
+    
+    func game_over_check() {
+        if self.check_has_won() {
+            self.hide_decks_and_stacks()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.show_big_label("You won.")
+            }
+        }
+    }
     
     func hide_decks_and_stacks() {
         for stack in self.card_stacks {
