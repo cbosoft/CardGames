@@ -65,4 +65,9 @@ class CardPosition: SKNode {
         let uid = UInt(bitPattern: ObjectIdentifier(self))
         return String(format: "%x", uid)
     }
+    
+    func tap() {
+        // do nothing
+        print(self.uid(), "tapped")
+    }
 }

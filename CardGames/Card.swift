@@ -96,4 +96,10 @@ class Card: CardPosition {
         return lhs.number == rhs.number && lhs.suit == rhs.suit
     }
     
+    override func tap() {
+        if !self.flipped {
+            self.set_flipped(true)
+        }
+    }
+    
 }
