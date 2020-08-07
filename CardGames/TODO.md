@@ -1,4 +1,4 @@
 #  TODO
-- add auto complete
-- move help to object/func
+- add auto complete?
+- add undo stack?
 - add other card games
