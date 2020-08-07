@@ -105,4 +105,14 @@ class VisibleStack: CardStack {
             card.run(action: action)
         }
     }
+    
+    override func point_hits(pt: CGPoint) -> CGFloat? {
+        for card in self.cards {
+            if let rv = card.point_hits(pt: pt) {
+                return rv
+            }
+        }
+        
+        return super.point_hits(pt: pt)
+    }
 }
