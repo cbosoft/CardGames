@@ -122,7 +122,7 @@ class DeckStack: CardStack {
             }
         }
         else {
-            self.hidden_pile = self.flipped_pile
+            self.hidden_pile = self.flipped_pile.reversed()
             self.flipped_pile = []
         }
         self.display_cards()
