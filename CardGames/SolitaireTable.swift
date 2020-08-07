@@ -34,7 +34,7 @@ class SolitaireTable: Table {
         let visible_y: CGFloat = size.height*0.5
         for i in 0..<7 {
             let visible_x: CGFloat = margin + CGFloat(i)*spacing
-            let stack = VisibleStack(x: visible_x, y: visible_y)
+            let stack = AlternatingColourVisibleStack(x: visible_x, y: visible_y)
             self.visible_stacks.append(stack)
             self.card_stacks.append(stack)
             self.addChild(stack)
