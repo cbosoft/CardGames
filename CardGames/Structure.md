@@ -39,3 +39,5 @@ CardTable: Manage location of stacks, card generation through decks,
   +- Other games...?
 ```
 
+## Gameplay
+Card games are played through a table, which is essentially a set of stacks, deck(s), and a win condition
