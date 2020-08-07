@@ -106,6 +106,15 @@ class Table: SKNode {
         self.source_stack = nil
         
     
+    func hide_decks_and_stacks() {
+        for stack in self.card_stacks {
+            stack.run(SKAction.fadeOut(withDuration: 0.5))
+        }
+        for deck in self.decks {
+            deck.run(SKAction.fadeOut(withDuration: 1))
+        }
+    }
+    
     func show_big_label(_ text: String? = nil) {
         let centre: CGPoint
         if let scene = self.scene {
