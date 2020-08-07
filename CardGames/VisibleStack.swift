@@ -31,12 +31,10 @@ class VisibleStack: CardStack {
     }
     
     override func put_card(_ card: CardPosition) {
-        print("PUTTING")
         if let card = card as? Card {
             self.cards.append(card)
         }
         else if let stack = card as? VisibleStack {
-            print("PUTTING STACK")
             for card in stack.cards {
                 self.add_card(card)
             }
