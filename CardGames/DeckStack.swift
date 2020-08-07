@@ -70,12 +70,15 @@ class DeckStack: CardStack {
         if hidden_start < 0 {
             hidden_start = 0
         }
+        let nhidden = self.hidden_pile.count - hidden_start
+        let offset: CGFloat = 20
         for i in hidden_start..<self.hidden_pile.count {
             let hidden_card = self.hidden_pile[i]
             hidden_card.set_flipped(false)
             hidden_card.isHidden = false
-            //let dx = CGFloat(i - self.number_left + 1)*20
-            hidden_card.set_position(x, y, CGFloat(i))
+            let j = i - hidden_start
+            let dx = -offset*CGFloat(nhidden - j - 1)
+            hidden_card.set_position(x + dx, y, CGFloat(i))
         }
         
         var flipped_start = self.flipped_pile.count - self.number_flipped
@@ -87,7 +90,9 @@ class DeckStack: CardStack {
             flipped_card.set_flipped(true)
             flipped_card.isHidden = false
             //let dx = CGFloat(i - self.number_flipped + 1)*20
-            flipped_card.set_position(x+self.spacing, y, CGFloat(i))
+            let j = i - flipped_start
+            let dx = offset*CGFloat(j)
+            flipped_card.set_position(x+self.spacing+dx, y, CGFloat(i))
         }
     }
     
