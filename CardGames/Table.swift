@@ -36,6 +36,8 @@ class Table: SKNode {
     
     var big_label: SKLabelNode
     
+    var autocomplete_move_time = 0.2
+    
     required init(size: CGSize) {
         self.big_label = SKLabelNode()
         self.big_label.horizontalAlignmentMode = .center
@@ -195,7 +197,7 @@ class Table: SKNode {
     func auto_complete() {
         
         if self.auto_complete_one() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.autocomplete_move_time + 0.1) {
                 self.auto_complete()
             }
         }

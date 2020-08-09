@@ -125,8 +125,8 @@ class SolitaireTable: Table {
                 for dest in self.top_stacks {
                     if dest.will_accept_card(card) {
                         let _ = source.take_card()
-                        card.run(action: SKAction.move(to: dest.position, duration: 0.3))
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        card.run(action: SKAction.move(to: dest.position, duration: self.autocomplete_move_time))
+                        DispatchQueue.main.asyncAfter(deadline: .now() + self.autocomplete_move_time) {
                             dest.add_card(card)
                             source.post_move()
                             self.game_over_check()
