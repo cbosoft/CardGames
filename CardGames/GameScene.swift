@@ -39,6 +39,10 @@ class GameScene: SKScene {
         
         self.table = self.TableType.init(size: size)
         self.addChild(table!)
+        
+        let double_click_rec = NSClickGestureRecognizer(target: self, action: #selector(self.doubleClicked))
+        double_click_rec.numberOfClicksRequired = 2
+        self.view!.addGestureRecognizer(double_click_rec)
     }
     
     func init_help() {
@@ -107,6 +111,10 @@ class GameScene: SKScene {
     
     override func mouseUp(with event: NSEvent) {
         self.touchUp(atPoint: event.location(in: self))
+    }
+    
+    @objc func doubleClicked() {
+        self.auto_complete()
     }
     
     func quit() {
