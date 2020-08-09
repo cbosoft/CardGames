@@ -123,4 +123,8 @@ class CardStack: CardPosition {
             last.set_flipped(true)
         }
     }
+    
+    func top_card() -> Card? {
+        return self.cards.last
+    }
 }

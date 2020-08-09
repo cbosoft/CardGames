@@ -192,5 +192,9 @@ class DeckStack: CardStack {
         self.flipped_pile = []
     }
     
+    override func top_card() -> Card? {
+        return self.flipped_pile.last
+    }
+    
     
 }
