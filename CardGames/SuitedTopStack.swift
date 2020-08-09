@@ -36,15 +36,16 @@ class SuitedTopStack: TopStack {
         self.suit = suit
         self.max_cards = max_cards
         super.init(x: x, y: y)
-        let suitlabel = SKLabelNode(text: suit)
+        let suitlabel = SKLabelNode(text: Deck.suitname2icon[suit]!)
         let w = Card.size.width
         let h = Card.size.height
         suitlabel.position = CGPoint(x: 0.5*w, y: 0.5*h)
         suitlabel.verticalAlignmentMode = .center
         suitlabel.horizontalAlignmentMode = .center
-        suitlabel.fontSize = Card.size.height/5
-        suitlabel.run(SKAction.rotate(byAngle: CGFloat(Double.pi*0.5), duration: 0))
+        //suitlabel.fontSize = Card.size.height/5
+        //suitlabel.run(SKAction.rotate(byAngle: CGFloat(Double.pi*0.5), duration: 0))
         self.addChild(suitlabel)
+        self.zPosition = -0.1
     }
     
     required init?(coder aDecoder: NSCoder) {

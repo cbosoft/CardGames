@@ -41,16 +41,24 @@ class Card: CardPosition {
     }
     private var flipped: Bool = false
     
-    private let suit_label: SKLabelNode
-    private let value_label: SKLabelNode
+    private var bg_colour = SKColor.white //init(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
+    private var back_colour = SKColor.gray
+    private var red_colour = SKColor.init(red: 0.8, green: 0.1, blue: 0.1, alpha: 1.0)
+    private var black_colour = SKColor.init(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
+    
+    private let labels: [SKLabelNode]
     private let bg: SKShapeNode
     
     init(x: CGFloat = 0, y: CGFloat = 0, suit: String, value: String) {
         self.suit = suit
         self.value = value
         
-        self.suit_label = SKLabelNode(text: suit)
-        self.value_label = SKLabelNode(text: value)
+        let suit_icon = Deck.suitname2icon[suit]!
+        let text = String(format: "%@", value)
+        let top_label = SKLabelNode(text: text)
+        let middle_label = SKLabelNode(text: suit_icon)
+        let bottom_label = SKLabelNode(text: text)
+        self.labels = [top_label, middle_label, bottom_label]
         
         // white rounded rectangle
         self.bg = SKShapeNode(
@@ -58,30 +66,43 @@ class Card: CardPosition {
                 origin: CGPoint(x: 0, y: 0),
                 size: Card.size),
             cornerRadius: 0.0)
-        self.bg.fillColor = SKColor.white
-        self.bg.strokeColor = .black
-        self.bg.lineWidth = 1.0
+        self.bg.fillColor = self.bg_colour
         
         super.init(x: x, y: y)
         
-        self.addChild(self.suit_label)
-        self.addChild(self.value_label)
+        self.bg.strokeColor = .white //self.scene?.backgroundColor ?? SKColor.black
+        //self.black_colour = self.bg.strokeColor
+        self.bg.lineWidth = 1.0
+        
+        self.addChild(top_label)
+        self.addChild(middle_label)
+        self.addChild(bottom_label)
         self.addChild(self.bg)
         
         let isred = Deck.is_red(suit: suit)
         let font_name = NSFont.boldSystemFont(ofSize: Card.size.height/7).fontName
         
-        self.value_label.position = CGPoint(x: 5.0, y: Card.size.height - 5)
-        self.value_label.fontName = font_name
-        self.value_label.fontColor = isred ? .red : .black
-        self.value_label.horizontalAlignmentMode = .left
-        self.value_label.verticalAlignmentMode = .top
+        top_label.position = CGPoint(x: 5.0, y: Card.size.height - 5)
+        top_label.fontName = font_name
+        top_label.fontColor = isred ? self.red_colour : self.black_colour
+        top_label.fontSize = Card.size.height/5
+        top_label.horizontalAlignmentMode = .left
+        top_label.verticalAlignmentMode = .top
         
-        self.suit_label.position = CGPoint(x: Card.size.width - 5.0, y: 5.0)
-        self.suit_label.fontName = font_name
-        self.suit_label.fontColor = isred ? .red : .black
-        self.suit_label.fontSize = Card.size.height/10
-        self.suit_label.horizontalAlignmentMode = .right
+        middle_label.position = CGPoint(x: Card.size.width*0.5, y: Card.size.height*0.5)
+        //middle_label.fontName = font_name
+        middle_label.fontColor = isred ? self.red_colour : self.black_colour
+        //middle_label.fontSize = Card.size.height/2
+        middle_label.horizontalAlignmentMode = .center
+        middle_label.verticalAlignmentMode = .center
+        
+        bottom_label.position = CGPoint(x: Card.size.width - 5.0, y: 5.0)
+        bottom_label.fontName = font_name
+        bottom_label.fontColor = isred ? self.red_colour : self.black_colour
+        bottom_label.fontSize = Card.size.height/5
+        bottom_label.horizontalAlignmentMode = .left
+        bottom_label.verticalAlignmentMode = .top
+        bottom_label.run(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 0.0))
         
         
         self.position = CGPoint(x: x, y: y)
@@ -96,15 +117,18 @@ class Card: CardPosition {
     }
     
     func set_flipped(_ v: Bool) {
+        
         if v {
-            self.suit_label.isHidden = false
-            self.value_label.isHidden = false
-            self.bg.fillColor = .white
+            for label in self.labels {
+                label.isHidden = false
+            }
+            self.bg.fillColor = self.bg_colour
         }
         else {
-            self.suit_label.isHidden = true
-            self.value_label.isHidden = true
-            self.bg.fillColor = .gray
+            for label in self.labels {
+                label.isHidden = true
+            }
+            self.bg.fillColor = self.back_colour
         }
         self.flipped = v
     }
