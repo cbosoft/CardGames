@@ -58,8 +58,15 @@ class CardStack: CardPosition {
         self.cards = []
     }
     
+    func will_accept_card(_ card: Card) -> Bool {
+        return true
+    }
+    
     @discardableResult func add_card(_ card: CardPosition) -> Bool {
         if let card = card as? Card {
+            if !self.will_accept_card(card) {
+                return false
+            }
             self.cards.append(card)
             self.display_cards()
             return true

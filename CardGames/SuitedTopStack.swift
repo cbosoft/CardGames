@@ -55,23 +55,20 @@ class SuitedTopStack: TopStack {
         return self.cards.count >= self.max_cards
     }
     
-    override func add_card(_ card: CardPosition) -> Bool {
+    override func will_accept_card(_ card: Card) -> Bool {
         if self.full() {
             return false
         }
         
-        if let card = card as? Card {
-            if card.suit == self.suit {
-                
-                let next_value = Deck.values[self.cards.count]
-                if card.value != next_value {
-                    return false
-                }
-                
-                return super.add_card(card)
-            }
+        if card.suit != self.suit {
+            return false
         }
         
-        return false
+        // TODO change to Deck.next_in_sequence
+        if card.value != Deck.values[self.cards.count] {
+            return false
+        }
+        
+        return true
     }
 }
