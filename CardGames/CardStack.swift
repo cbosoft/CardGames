@@ -92,17 +92,21 @@ class CardStack: CardPosition {
         }
     }
     
+    func take_card() -> Card? {
+        if let rv = self.cards.last {
+            let index = self.cards.count - 1
+            self.cards.remove(at: index)
+            self.display_cards()
+            return rv
+        }
+        else {
+            return nil
+        }
+    }
+    
     func try_take(point: CGPoint) -> CardPosition? {
         if self.point_hits(pt: point) != nil {
-            if let rv = self.cards.last {
-                let index = self.cards.count - 1
-                self.cards.remove(at: index)
-                self.display_cards()
-                return rv
-            }
-            else {
-                return nil
-            }
+            return self.take_card()
         }
         return nil
     }
