@@ -114,4 +114,30 @@ class SolitaireTable: Table {
     //override func try_drop_card(here: CGPoint) {
     //    // TODO
     //}
+    
+    override func auto_complete_one() -> Bool {
+        var source_stacks: [CardStack] = []
+        source_stacks.append(contentsOf: self.visible_stacks)
+        source_stacks.append(self.deck_stack)
+        
+        for source in source_stacks {
+            if let card = source.top_card() {
+                for dest in self.top_stacks {
+                    if dest.will_accept_card(card) {
+                        let _ = source.take_card()
+                        card.run(action: SKAction.move(to: dest.position, duration: 0.3))
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            dest.add_card(card)
+                            source.post_move()
+                            self.game_over_check()
+                        }
+                        return true
+                    }
+                }
+            }
+        }
+        
+        
+        return false
+    }
 }

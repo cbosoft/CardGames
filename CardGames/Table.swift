@@ -188,4 +188,16 @@ class Table: SKNode {
         self.big_label.run(SKAction.fadeIn(withDuration: 1.0))
     }
     
+    func auto_complete_one() -> Bool {
+        fatalError("Table.auto_complete_one() not implemented!")
+    }
+    
+    func auto_complete() {
+        
+        if self.auto_complete_one() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                self.auto_complete()
+            }
+        }
+    }
 }

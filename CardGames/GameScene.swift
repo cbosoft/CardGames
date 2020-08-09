@@ -32,7 +32,7 @@ class GameScene: SKScene {
     var table: Table? = nil
     var TableType: Table.Type = SolitaireTable.self
     var help: SKNode? = nil
-    let help_text: [String] = ["r: Re-deal", "m: Menu", "q: Quit"]
+    let help_text: [String] = ["r: Re-deal", "a: auto-complete", "m: Menu", "q: Quit"]
     
     override func didMove(to view: SKView) {
         // called when view is opened?
@@ -149,6 +149,9 @@ class GameScene: SKScene {
         }
     }
     
+    func auto_complete() {
+        self.table?.auto_complete()
+    }
     
     override func keyDown(with event: NSEvent) {
         // https://gist.github.com/swillits/df648e87016772c7f7e5dbed2b345066
@@ -165,6 +168,9 @@ class GameScene: SKScene {
             
         case 0x0F:
             self.redeal()
+            
+        case 0x00:
+            self.auto_complete()
             
         default:
             self.show_help()
