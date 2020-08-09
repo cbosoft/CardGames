@@ -147,6 +147,18 @@ class DeckStack: CardStack {
         //self.cards[self.index].set_flipped(true)
     }
     
+    override func take_card() -> Card? {
+        if let rv = self.flipped_pile.last {
+            let index = self.flipped_pile.count - 1
+            self.flipped_pile.remove(at: index)
+            self.display_cards()
+            return rv
+        }
+        else {
+            return nil
+        }
+    }
+    
     override func try_take(point: CGPoint) -> CardPosition? {
         // mouse down on table: does it hit this DeckStack?
         if self.point_hits(pt: point) != nil {
