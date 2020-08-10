@@ -43,6 +43,7 @@ class MenuButton : SKShapeNode {
         self.text.verticalAlignmentMode = .center
         self.text.horizontalAlignmentMode = .center
         self.text.text = text
+        self.text.fontSize = height
     }
     
     required init?(coder aDecoder: NSCoder) {

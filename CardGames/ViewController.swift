@@ -37,7 +37,7 @@ class ViewController: NSViewController {
 
         if let view = self.skView {
             if let scene = SKScene(fileNamed: "MenuScene") {
-                scene.scaleMode = .aspectFit
+                scene.scaleMode = .aspectFill
                 view.presentScene(scene)
             }
             

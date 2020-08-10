@@ -38,10 +38,12 @@ class MenuScene : SKScene {
             ("Quit", self.quit_clicked)
         ]
         
-        let x = self.size.width*0.5
-        var y = self.size.height*0.5
-        let button_height: CGFloat = 20.0
+        let button_height: CGFloat = 40.0
+        let button_offset: CGFloat = 20.0
         let button_width: CGFloat = 100.0
+        
+        let x = self.size.width*0.5
+        var y = self.size.height*0.5 + 0.5*CGFloat(texts_and_callbacks.count)*(button_height + button_offset)
         for text_and_callback in texts_and_callbacks {
             let text = text_and_callback.0
             let callback = text_and_callback.1
@@ -49,7 +51,7 @@ class MenuScene : SKScene {
             let button = MenuButton(callback: callback, width: button_width, height: button_height, text: text)
             button.position = CGPoint(x: x, y: y)
             y -= button_height
-            y -= 15.0
+            y -= button_offset
             self.addChild(button)
             self.buttons.append(button)
         }
@@ -74,7 +76,7 @@ class MenuScene : SKScene {
             if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
                 self.run(SKAction.fadeOut(withDuration: 0.3))
                 scene.TableType = game_type
-                scene.scaleMode = .aspectFit
+                scene.scaleMode = .aspectFill
                 scene.run(SKAction.fadeOut(withDuration: 0.0))
                 view.presentScene(scene)
                 scene.run(SKAction.fadeIn(withDuration: 0.3))
