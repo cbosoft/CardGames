@@ -138,4 +138,8 @@ class CardStack: CardPosition {
     func top_card() -> Card? {
         return self.cards.last
     }
+    
+    func get_next_card_position() -> CGPoint {
+        return self.position
+    }
 }
