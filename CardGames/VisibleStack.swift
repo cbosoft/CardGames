@@ -30,6 +30,13 @@ import Foundation
 class VisibleStack: CardStack {
     
     private let maximum_offset: CGFloat = 35.0
+    var offset: CGFloat {
+        get {
+            let height = self.scene?.size.height ?? 768
+            let offset = height / CGFloat(self.cards.count)
+            return offset > self.maximum_offset ? self.maximum_offset : offset
+        }
+    }
     
     
     @discardableResult override func add_card(_ card: CardPosition) -> Bool {
@@ -125,20 +132,12 @@ class VisibleStack: CardStack {
     }
     
     func display_cards(base_z: CGFloat) {
-        // TODO get screen height properly
-        let height: CGFloat = 768.0
-        var offset = height*0.5 / CGFloat(self.cards.count)
-        if offset > self.maximum_offset {
-            offset = self.maximum_offset
-        }
-        
-        
         let x = self.get_x()
         var y = self.get_y()
         var stack_height = base_z
         for card in self.cards {
             let pos = CGPoint(x: x, y: y)
-            y -= offset
+            y -= self.offset
             card.position = pos
             card.zPosition = stack_height
             stack_height += 1
