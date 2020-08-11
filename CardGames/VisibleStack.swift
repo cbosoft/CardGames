@@ -92,8 +92,19 @@ class VisibleStack: CardStack {
             // move the cards over to the new stack
             for i in return_from..<self.cards.count {
                 let card = self.cards[i]
+                
+                // can't take stack containing an unflipped card
                 if !card.is_flipped() {
                     return nil
+                }
+                
+                // can't take stack containing out-of-sequence cards
+                if i < self.cards.count-1 {
+                    let next = self.cards[i+1]
+                    print(next.value, Deck.prev_in_sequence(value: next.value)!, card.value)
+                    if next.value != Deck.prev_in_sequence(value: card.value) {
+                        return nil
+                    }
                 }
                 rv.cards.append(card)
             }
