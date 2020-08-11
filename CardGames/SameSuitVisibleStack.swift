@@ -84,3 +84,28 @@ class SameSuitVisibleStack : VisibleStack {
     }
 }
 
+class SameSuitWildVisibleStack : SameSuitVisibleStack {
+    
+    override func check_card_is_next(_ card: Card) -> Bool {
+        if let last = self.cards.last {
+            
+            // cards not in same suit not allowed
+            if card.suit != last.suit {
+                return false
+            }
+            
+            // card not previous value not allowed (i.e. 2 on 3, J on Q)
+            if let prev = Deck.prev_in_sequence(value: last.value){
+                if card.value != prev {
+                    return false
+                }
+            }
+        }
+        else {
+            // stack is empty: colour and suit don't matter
+            return true
+        }
+        return true
+    }
+
+}
