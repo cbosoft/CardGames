@@ -31,6 +31,8 @@ class SpiderSolitaireTable : Table {
     
     private var visible_stacks: [VisibleStack] = []
     private var completed_stacks: [TopStack] = []
+    private var unspent_stack: UnspentDeckStack?
+    
     private var deck: Deck {
         get {
             return self.decks[1]
@@ -49,8 +51,8 @@ class SpiderSolitaireTable : Table {
     }
     private var n_decks: Int = 2
     
-    // MARK: Init
     
+    // MARK: Init
     required init(size: CGSize, decktype: Deck.Type) {
         super.init(size: size, decktype: decktype)
         
@@ -66,6 +68,9 @@ class SpiderSolitaireTable : Table {
             self.card_stacks.append(stack)
             self.addChild(stack)
         }
+        
+        self.unspent_stack = UnspentDeckStack(x: size.width - self.margin - Card.size.width, y: self.margin, visible_stacks: self.visible_stacks)
+        self.card_stacks.append(self.unspent_stack!)
         self.redeal()
     }
     
@@ -87,6 +92,10 @@ class SpiderSolitaireTable : Table {
         for stack in self.visible_stacks {
             stack.display_cards()
             stack.post_move()
+        }
+        
+        for _ in 0..<self.deck.to_draw.count {
+            self.unspent_stack?.put_card(self.deck.draw())
         }
     }
     
