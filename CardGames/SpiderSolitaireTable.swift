@@ -55,6 +55,7 @@ class SpiderSolitaireTable : Table {
     // MARK: Init
     required init(size: CGSize, decktype: Deck.Type) {
         super.init(size: size, decktype: decktype)
+        self.game_name = "Spider Solitaire"
         
         for _ in 0..<self.n_decks {
             self.add_deck()

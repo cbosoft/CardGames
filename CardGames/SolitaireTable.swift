@@ -46,6 +46,7 @@ class SolitaireTable: Table {
         let toprow_y: CGFloat = 0.75*size.height
         self.deck_stack = DeckStack(x: margin, y: toprow_y, spacing: spacing)
         super.init(size: size, decktype: decktype)
+        self.game_name = "Solitaire"
         self.add_deck()
         self.addChild(self.deck_stack)
         self.card_stacks.append(deck_stack)

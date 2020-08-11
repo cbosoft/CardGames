@@ -36,6 +36,7 @@ class Table: SKNode {
     var selected_card: CardPosition? = nil
     var source_stack: CardStack? = nil
     var size: CGSize
+    var game_name = "unset"
     
     var big_label: SKLabelNode
     
