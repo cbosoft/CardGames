@@ -1,5 +1,6 @@
 #  TODO
-- add undo stack?
-- add other card games
-  - spider solitaire!
+- add undo/redo
 - app not responding when quit from fullscreen
+- not quite happy with resizing
+- spider stacks cover completed stacks
+- add game settings menu
