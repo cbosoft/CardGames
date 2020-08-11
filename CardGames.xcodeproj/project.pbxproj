@@ -33,6 +33,8 @@
 		8384821C24E2C6B100EA81D7 /* SpiderSolitaireTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384821B24E2C6B100EA81D7 /* SpiderSolitaireTable.swift */; };
 		8384821E24E2D2F800EA81D7 /* SameSuitVisibleStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384821D24E2D2F800EA81D7 /* SameSuitVisibleStack.swift */; };
 		8384822024E2D3E000EA81D7 /* TwoSuitDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384821F24E2D3E000EA81D7 /* TwoSuitDeck.swift */; };
+		8384822224E2E35C00EA81D7 /* UnspentDeckStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384822124E2E35C00EA81D7 /* UnspentDeckStack.swift */; };
+		8384822424E2FC4800EA81D7 /* SingleSuitDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384822324E2FC4800EA81D7 /* SingleSuitDeck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,8 @@
 		8384821B24E2C6B100EA81D7 /* SpiderSolitaireTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiderSolitaireTable.swift; sourceTree = "<group>"; };
 		8384821D24E2D2F800EA81D7 /* SameSuitVisibleStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SameSuitVisibleStack.swift; sourceTree = "<group>"; };
 		8384821F24E2D3E000EA81D7 /* TwoSuitDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSuitDeck.swift; sourceTree = "<group>"; };
+		8384822124E2E35C00EA81D7 /* UnspentDeckStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnspentDeckStack.swift; sourceTree = "<group>"; };
+		8384822324E2FC4800EA81D7 /* SingleSuitDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSuitDeck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,12 +164,14 @@
 				8384821D24E2D2F800EA81D7 /* SameSuitVisibleStack.swift */,
 				8358785424DB0C9400A3AFCA /* SolitaireTable.swift */,
 				8384821B24E2C6B100EA81D7 /* SpiderSolitaireTable.swift */,
+				8384822124E2E35C00EA81D7 /* UnspentDeckStack.swift */,
 				8358784D24DAFA3B00A3AFCA /* Structure.md */,
 				8358785A24DB179500A3AFCA /* SuitedTopStack.swift */,
 				8358785224DB0BD200A3AFCA /* Table.swift */,
 				8358785D24DC019C00A3AFCA /* TODO.md */,
 				8358785824DB169200A3AFCA /* TopStack.swift */,
 				8384821F24E2D3E000EA81D7 /* TwoSuitDeck.swift */,
+				8384822324E2FC4800EA81D7 /* SingleSuitDeck.swift */,
 				8358781D24D9C9A700A3AFCA /* ViewController.swift */,
 				8358784E24DAFB6600A3AFCA /* VisibleStack.swift */,
 			);
@@ -330,6 +336,7 @@
 				8358785324DB0BD200A3AFCA /* Table.swift in Sources */,
 				8358781624D9C9A700A3AFCA /* AppDelegate.swift in Sources */,
 				8384821E24E2D2F800EA81D7 /* SameSuitVisibleStack.swift in Sources */,
+				8384822424E2FC4800EA81D7 /* SingleSuitDeck.swift in Sources */,
 				8358785524DB0C9400A3AFCA /* SolitaireTable.swift in Sources */,
 				8358785F24DD7EED00A3AFCA /* AlternatingColourVisibleStack.swift in Sources */,
 				8358785124DAFD7200A3AFCA /* Deck.swift in Sources */,
@@ -338,6 +345,7 @@
 				8358784F24DAFB6600A3AFCA /* VisibleStack.swift in Sources */,
 				8358785724DB0D4300A3AFCA /* DeckStack.swift in Sources */,
 				8358784A24DAE4C800A3AFCA /* CardPosition.swift in Sources */,
+				8384822224E2E35C00EA81D7 /* UnspentDeckStack.swift in Sources */,
 				8358786524DD926D00A3AFCA /* MenuButton.swift in Sources */,
 				8358786324DD919700A3AFCA /* MenuScene.swift in Sources */,
 				8358784824DAAAAB00A3AFCA /* Card.swift in Sources */,
