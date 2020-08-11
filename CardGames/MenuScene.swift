@@ -35,6 +35,7 @@ class MenuScene : SKScene {
         
         let texts_and_callbacks = [
             ("Solitaire", self.solitaire_clicked),
+            ("Spider", self.spider_clicked),
             ("Quit", self.quit_clicked)
         ]
         
@@ -69,6 +70,20 @@ class MenuScene : SKScene {
     
     func solitaire_clicked() {
         self.show_game(game_type: SolitaireTable.self)
+    }
+    
+    func spider_clicked() {
+        if let view = self.view {
+            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
+                self.run(SKAction.fadeOut(withDuration: 0.3))
+                scene.TableType = SpiderSolitaireTable.self
+                scene.decktype = TwoSuitDeck.self
+                scene.scaleMode = .aspectFill
+                scene.run(SKAction.fadeOut(withDuration: 0.0))
+                view.presentScene(scene)
+                scene.run(SKAction.fadeIn(withDuration: 0.3))
+            }
+        }
     }
     
     func show_game(game_type: Table.Type) {
