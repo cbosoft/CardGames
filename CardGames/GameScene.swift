@@ -33,7 +33,7 @@ class GameScene: SKScene {
     var TableType: Table.Type = SolitaireTable.self
     var decktype: Deck.Type = Deck.self
     var help: SKNode? = nil
-    let help_text: [String] = ["r: Re-deal", "a: auto-complete", "m: Menu", "q: Quit"]
+    let help_text: [String] = ["r: Re-deal", "a: auto-complete", "m: Menu"]
     
     override func didMove(to view: SKView) {
         // called when view is opened?
@@ -118,13 +118,6 @@ class GameScene: SKScene {
         self.auto_complete()
     }
     
-    func quit() {
-        self.run(SKAction.fadeOut(withDuration: 0.5))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            exit(0)
-        }
-    }
-    
     func redeal() {
         self.table?.run(SKAction.fadeOut(withDuration: 0.2))
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -171,9 +164,6 @@ class GameScene: SKScene {
         //    }
         case 0x2E:
             self.back_to_menu()
-            
-        case 0x0C:
-            self.quit()
             
         case 0x0F:
             self.redeal()

@@ -35,8 +35,7 @@ class MenuScene : SKScene {
         
         let texts_and_callbacks = [
             ("Solitaire", self.solitaire_clicked),
-            ("Spider", self.spider_clicked),
-            ("Quit", self.quit_clicked)
+            ("Spider", self.spider_clicked)
         ]
         
         let button_height: CGFloat = 40.0
