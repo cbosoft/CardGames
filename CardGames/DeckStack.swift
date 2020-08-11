@@ -118,10 +118,9 @@ class DeckStack: CardStack {
     
     func next_card() {
         if self.hidden_pile.count > 0 {
-            let idx = self.flipped_pile.count// > 0 ? self.flipped_pile.count - 1 : 0
             for _ in 0..<self.number_flipped {
                 if let card = self.hidden_pile.last {
-                    self.flipped_pile.insert(card, at: idx)
+                    self.flipped_pile.append(card)
                     self.hidden_pile.removeLast()
                 }
             }
