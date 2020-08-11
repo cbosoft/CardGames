@@ -30,6 +30,7 @@
 		8358786124DD905100A3AFCA /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8358786024DD905100A3AFCA /* MenuScene.sks */; };
 		8358786324DD919700A3AFCA /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358786224DD919700A3AFCA /* MenuScene.swift */; };
 		8358786524DD926D00A3AFCA /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358786424DD926D00A3AFCA /* MenuButton.swift */; };
+		8384821E24E2D2F800EA81D7 /* SameSuitVisibleStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384821D24E2D2F800EA81D7 /* SameSuitVisibleStack.swift */; };
 		8384822024E2D3E000EA81D7 /* TwoSuitDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384821F24E2D3E000EA81D7 /* TwoSuitDeck.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		8358786024DD905100A3AFCA /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		8358786224DD919700A3AFCA /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		8358786424DD926D00A3AFCA /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		8384821D24E2D2F800EA81D7 /* SameSuitVisibleStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SameSuitVisibleStack.swift; sourceTree = "<group>"; };
 		8384821F24E2D3E000EA81D7 /* TwoSuitDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSuitDeck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 				8358784924DAE4C800A3AFCA /* CardPosition.swift */,
 				8358784D24DAFA3B00A3AFCA /* Structure.md */,
 				8358785224DB0BD200A3AFCA /* Table.swift */,
+				8384821D24E2D2F800EA81D7 /* SameSuitVisibleStack.swift */,
 				8358785424DB0C9400A3AFCA /* SolitaireTable.swift */,
 				8358785624DB0D4300A3AFCA /* DeckStack.swift */,
 				8358785824DB169200A3AFCA /* TopStack.swift */,
@@ -323,6 +326,7 @@
 				8358781C24D9C9A700A3AFCA /* GameScene.swift in Sources */,
 				8358785324DB0BD200A3AFCA /* Table.swift in Sources */,
 				8358781624D9C9A700A3AFCA /* AppDelegate.swift in Sources */,
+				8384821E24E2D2F800EA81D7 /* SameSuitVisibleStack.swift in Sources */,
 				8358785524DB0C9400A3AFCA /* SolitaireTable.swift in Sources */,
 				8358785F24DD7EED00A3AFCA /* AlternatingColourVisibleStack.swift in Sources */,
 				8358785124DAFD7200A3AFCA /* Deck.swift in Sources */,
