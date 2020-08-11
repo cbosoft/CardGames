@@ -94,6 +94,7 @@ class Deck: SKNode {
     func reset() {
         self.to_draw = self.cards
         for card in self.cards {
+            card.alpha = 1.0
             card.isHidden = true
             card.set_flipped(false)
         }
