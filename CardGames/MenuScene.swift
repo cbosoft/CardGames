@@ -77,7 +77,7 @@ class MenuScene : SKScene {
             if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
                 self.run(SKAction.fadeOut(withDuration: 0.3))
                 scene.TableType = SpiderSolitaireTable.self
-                scene.decktype = TwoSuitDeck.self
+                scene.decktype = SingleSuitDeck.self
                 scene.scaleMode = .aspectFit
                 scene.run(SKAction.fadeOut(withDuration: 0.0))
                 view.presentScene(scene)
