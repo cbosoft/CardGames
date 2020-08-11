@@ -38,6 +38,7 @@ class SolitaireTable: Table {
         }
     }
     
+    // MARK: Init
     required init(size: CGSize) {
         
         let spacing: CGFloat = size.width/8.0
@@ -70,6 +71,11 @@ class SolitaireTable: Table {
         self.redeal()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Redeal
     override func redeal() {
         super.redeal()
         
@@ -90,10 +96,7 @@ class SolitaireTable: Table {
         self.deck_stack.post_move()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+    // MARK: Win condition
     override func check_has_won() -> Bool {
         for stack in self.top_stacks {
             if stack.cards.count < 13 {
@@ -103,18 +106,7 @@ class SolitaireTable: Table {
         return true
     }
     
-    //override func try_pick_up_card(here: CGPoint) {
-    //    // TODO
-    //}
-    
-    //override func try_move_card(here: CGPoint) {
-    //    // TODO
-    //}
-    
-    //override func try_drop_card(here: CGPoint) {
-    //    // TODO
-    //}
-    
+    // MARK: Autocomplete
     override func auto_complete_one() -> Bool {
         var source_stacks: [CardStack] = []
         source_stacks.append(contentsOf: self.visible_stacks)

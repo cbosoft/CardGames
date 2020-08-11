@@ -29,6 +29,7 @@ import Foundation
 
 class Table: SKNode {
     
+    // MARK: Properties
     var decks: [Deck] = []
     var card_stacks: [CardStack] = []
     var selected_card: CardPosition? = nil
@@ -38,6 +39,9 @@ class Table: SKNode {
     
     var autocomplete_move_time = 0.2
     
+    // MARK: Init
+    // This init only sets up the "big_label" used to show the win/loss message to the player.
+    // Actual game init is expected to be done in the base class.
     required init(size: CGSize) {
         self.big_label = SKLabelNode()
         self.big_label.horizontalAlignmentMode = .center
@@ -47,6 +51,12 @@ class Table: SKNode {
         self.addChild(self.big_label)
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Redeal
+    // Called to reset the game to a starting condition
     func redeal () {
         for deck in self.decks {
             deck.reset()
@@ -58,16 +68,15 @@ class Table: SKNode {
         self.show_decks_and_stacks()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func add_deck(_ deck: Deck) {
         self.decks.append(deck)
         self.addChild(deck)
     }
     
-    
+    // MARK: Pick up card
+    // Called when the player seeks to pick up a card from a stack. The stacks
+    // on the table are all tested to see if they will allow a card or sub-stack
+    // to be picked up.
     func try_pick_up_card(here: CGPoint) {
         // Pick up a card
         for stack in self.card_stacks {
@@ -83,6 +92,8 @@ class Table: SKNode {
         }
     }
     
+    // MARK: Move card
+    // Called when a player is dragging a card. Simply updates the selected card's position.
     func try_move_card(here: CGPoint) {
         // Update card's position, if picked up
         if let card = self.selected_card {
@@ -97,6 +108,9 @@ class Table: SKNode {
         }
     }
     
+    // MARK: Drop card
+    // Called when the player is no longer dragging a a card. The card is added to a stack if
+    // possible, or returned to the source stack.
     func try_drop_card(here: CGPoint) {
 
         if let card = self.selected_card {
@@ -140,6 +154,7 @@ class Table: SKNode {
         game_over_check()
     }
     
+    // MARK: Win condition and game over
     func check_has_won() -> Bool {
         fatalError("Table.check_has_won() has not been implemented")
     }
@@ -153,6 +168,7 @@ class Table: SKNode {
         }
     }
     
+    // MARK: Hide/show
     func hide_decks_and_stacks() {
         for stack in self.card_stacks {
             stack.run(SKAction.fadeOut(withDuration: 0.5))
@@ -190,6 +206,7 @@ class Table: SKNode {
         self.big_label.run(SKAction.fadeIn(withDuration: 1.0))
     }
     
+    // MARK: Autocomplete
     func auto_complete_one() -> Bool {
         fatalError("Table.auto_complete_one() not implemented!")
     }
