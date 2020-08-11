@@ -226,4 +226,12 @@ class Table: SKNode {
             }
         }
     }
+    
+    // MARK: User Settings
+    func get_menu() -> [NSMenuItem] {
+        return []
+    }
+    
+    // TODO: func to read setting from datastore
+    // TODO func to save setting to datastore
 }

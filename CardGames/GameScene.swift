@@ -44,6 +44,34 @@ class GameScene: SKScene {
         let right_click_rec = NSClickGestureRecognizer(target: self, action: #selector(self.rightClicked))
         right_click_rec.buttonMask = 2
         self.view!.addGestureRecognizer(right_click_rec)
+        
+        // add game menu to menu bar
+        if let app = NSApp.delegate {
+            print("adding menu item")
+            let menu = (app as! AppDelegate).mainMenu!
+            let game_menu = menu.item(at: 1)!
+            game_menu.submenu?.removeAllItems()
+            game_menu.submenu?.title = self.table!.game_name
+            let items = self.table!.get_menu()
+            for item in items {
+                if let submenu = game_menu.submenu {
+                    submenu.addItem(item)
+                }
+            }
+            game_menu.isHidden = false
+        }
+        
+    }
+    
+    override func willMove(from view: SKView) {
+        // remove game menu from bar
+        if let app = NSApp.delegate {
+            print("adding menu item")
+            let menu = (app as! AppDelegate).mainMenu!
+            let game_menu = menu.item(at: 1)!
+            game_menu.submenu?.removeAllItems()
+            game_menu.isHidden = true
+        }
     }
     
     func init_help() {
