@@ -104,12 +104,10 @@ class SpiderSolitaireTable : Table {
         // TODO
         // Check if any stack contains KQJ1098765432A, move to complete pile
         
-        var all_empty = true
         for stack in self.visible_stacks {
             if stack.cards.count == 0 {
                 continue
             }
-            all_empty = false
             
             var started: Int? = nil
             for i in 0..<(stack.cards.count-1) {
@@ -141,6 +139,13 @@ class SpiderSolitaireTable : Table {
         }
         
         // Check if all stacks empty
+        var all_empty = true
+        for stack in self.visible_stacks {
+            if stack.cards.count > 0 {
+                all_empty = false
+                break
+            }
+        }
         return all_empty
     }
     
