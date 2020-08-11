@@ -30,10 +30,12 @@ import Foundation
 class Table: SKNode {
     
     // MARK: Properties
+    var DeckType: Deck.Type
     var decks: [Deck] = []
     var card_stacks: [CardStack] = []
     var selected_card: CardPosition? = nil
     var source_stack: CardStack? = nil
+    var size: CGSize
     
     var big_label: SKLabelNode
     
@@ -42,7 +44,9 @@ class Table: SKNode {
     // MARK: Init
     // This init only sets up the "big_label" used to show the win/loss message to the player.
     // Actual game init is expected to be done in the base class.
-    required init(size: CGSize) {
+    required init(size: CGSize, decktype: Deck.Type) {
+        self.DeckType = decktype
+        self.size = size
         self.big_label = SKLabelNode()
         self.big_label.horizontalAlignmentMode = .center
         self.big_label.verticalAlignmentMode = .center
@@ -63,12 +67,14 @@ class Table: SKNode {
         }
         for stack in self.card_stacks {
             stack.reset()
+            stack.display_cards()
         }
         self.hide_big_label()
         self.show_decks_and_stacks()
     }
     
-    func add_deck(_ deck: Deck) {
+    func add_deck() {
+        let deck = self.DeckType.init()
         self.decks.append(deck)
         self.addChild(deck)
     }

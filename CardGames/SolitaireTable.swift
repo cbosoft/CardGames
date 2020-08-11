@@ -39,14 +39,14 @@ class SolitaireTable: Table {
     }
     
     // MARK: Init
-    required init(size: CGSize) {
+    required init(size: CGSize, decktype: Deck.Type) {
         
         let spacing: CGFloat = size.width/8.0
         let margin: CGFloat = spacing*2.0/3.0
         let toprow_y: CGFloat = 0.75*size.height
         self.deck_stack = DeckStack(x: margin, y: toprow_y, spacing: spacing)
-        super.init(size: size)
-        self.add_deck(Deck())
+        super.init(size: size, decktype: decktype)
+        self.add_deck()
         self.addChild(self.deck_stack)
         self.card_stacks.append(deck_stack)
         
@@ -60,7 +60,7 @@ class SolitaireTable: Table {
         }
         
         var top_x = margin + 3*spacing
-        for suit in Deck.suits {
+        for suit in self.deck.suits {
             let top_stack = SuitedTopStack(x: top_x, y: toprow_y, suit: suit)
             top_x += spacing
             self.top_stacks.append(top_stack)
