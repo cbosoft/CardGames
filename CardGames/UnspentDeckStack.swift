@@ -80,14 +80,20 @@ class UnspentDeckStack: CardStack {
     func deal_to_stacks() {
         for stack in self.visible_stacks {
             if let card = self.cards.last {
-                stack.put_card(card)
+                stack.cards.append(card)
+                card.position = self.position
+                card.run(action: SKAction.move(to: stack.get_next_card_position(), duration: 0.2))
                 card.isHidden = false
                 card.set_flipped(true)
-                stack.display_cards()
                 self.cards.removeLast()
             }
             else {
                 break
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            for stack in self.visible_stacks {
+                stack.display_cards()
             }
         }
         self.display_cards()

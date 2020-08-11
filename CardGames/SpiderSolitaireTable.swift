@@ -125,7 +125,12 @@ class SpiderSolitaireTable : Table {
                             let new_completed = TopStack(x: self.margin+dx, y: self.margin)
                             let completed_temp = stack.take_from(index: start_index)!
                             for card in completed_temp.cards {
-                                new_completed.put_card(card)
+                                new_completed.cards.append(card)
+                                card.run(action: SKAction.move(to: new_completed.get_next_card_position(), duration: 0.2))
+                            }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                new_completed.display_cards()
                             }
                             self.completed_stacks.append(new_completed)
                             self.card_stacks.append(new_completed)
