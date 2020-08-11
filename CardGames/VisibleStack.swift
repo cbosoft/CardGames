@@ -91,36 +91,9 @@ class VisibleStack: CardStack {
                 self.cards.removeLast()
                 return rv
             }
-            
-            let sx = self.cards[return_from].get_x()
-            let sy = self.cards[return_from].get_y()
-            let rv = VisibleStack(x: sx, y: sy, has_border: false)
-            
-            // move the cards over to the new stack
-            for i in return_from..<self.cards.count {
-                let card = self.cards[i]
-                
-                // can't take stack containing an unflipped card
-                if !card.is_flipped() {
-                    return nil
-                }
-                
-                // can't take stack containing out-of-sequence cards
-                if i < self.cards.count-1 {
-                    let next = self.cards[i+1]
-                    print(next.value, Deck.prev_in_sequence(value: next.value)!, card.value)
-                    if next.value != Deck.prev_in_sequence(value: card.value) {
-                        return nil
-                    }
-                }
-                rv.cards.append(card)
+            else {
+                return self.take_from(index: return_from)
             }
-            
-            for _ in return_from..<self.cards.count {
-                self.cards.remove(at: return_from)
-            }
-            
-            return rv
         }
         else {
             return nil
@@ -158,5 +131,42 @@ class VisibleStack: CardStack {
         }
         
         return super.point_hits(pt: pt)
+    }
+    
+    override func get_next_card_position() -> CGPoint {
+        let y = self.get_y() - CGFloat(self.cards.count)*self.offset
+        let x = self.get_x()
+        return CGPoint(x: x, y: y)
+    }
+    
+    func take_from(index: Int) -> VisibleStack? {
+        let sx = self.cards[index].get_x()
+        let sy = self.cards[index].get_y()
+        let rv = VisibleStack(x: sx, y: sy, has_border: false)
+        
+        // move the cards over to the new stack
+        for i in index..<self.cards.count {
+            let card = self.cards[i]
+            
+            // can't take stack containing an unflipped card
+            if !card.is_flipped() {
+                return nil
+            }
+            
+            // can't take stack containing out-of-sequence cards
+            if i < self.cards.count-1 {
+                let next = self.cards[i+1]
+                if next.value != Deck.prev_in_sequence(value: card.value) {
+                    return nil
+                }
+            }
+            rv.cards.append(card)
+        }
+        
+        for _ in index..<self.cards.count {
+            self.cards.remove(at: index)
+        }
+        
+        return rv
     }
 }
