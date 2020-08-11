@@ -134,7 +134,7 @@ class VisibleStack: CardStack {
     }
     
     override func get_next_card_position() -> CGPoint {
-        let y = self.get_y() - CGFloat(self.cards.count)*self.offset
+        let y = self.get_y() - CGFloat(self.cards.count-1)*self.offset
         let x = self.get_x()
         return CGPoint(x: x, y: y)
     }
