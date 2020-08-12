@@ -51,15 +51,15 @@ class SpiderSolitaireTable : Table {
     }
     private var n_decks: Int = 2
     
+    // Menu Items
+    private var n_deck_items: [NSMenuItem] = []
+    private var n_suit_items: [NSMenuItem] = []
+    
     
     // MARK: Init
     required init(size: CGSize) {
         super.init(size: size)
         self.game_name = "Spider Solitaire"
-        
-        for _ in 0..<self.n_decks {
-            self.add_deck()
-        }
         
         let toprow_y: CGFloat = self.size.height - 1.5*Card.size.height
         for i in 0..<10 {
@@ -82,6 +82,26 @@ class SpiderSolitaireTable : Table {
     // MARK: Redeal
     override func redeal() {
         super.redeal()
+        
+        self.n_decks = self.read_user_setting("n_decks") as? Int ?? 2
+        let n_suits = self.read_user_setting("n_suits") as? Int ?? 2
+        
+        switch n_suits {
+        case 1:
+            self.DeckType = SingleSuitDeck.self
+            break
+        case 2:
+            self.DeckType = TwoSuitDeck.self
+            break
+        default:
+            self.DeckType = Deck.self
+            break
+        }
+        
+        self.decks  = []
+        for _ in 0..<self.n_decks {
+            self.add_deck()
+        }
         
         for card_index in 0..<54 {
             let card = Bool(card_index < 52) ? self.decks[0].draw() : self.decks[1].draw()
@@ -166,5 +186,57 @@ class SpiderSolitaireTable : Table {
     override func auto_complete_one() -> Bool {
         // TODO
         return false
+    }
+    
+    // MARK: Menu
+    override func get_menu() -> [NSMenuItem] {
+        var rv = super.get_menu()
+        
+        // TODO add custom settings here
+        //  - number of decks
+        //  - number of suits
+        
+        rv.append(NSMenuItem.separator())
+        for n in [2,4] {
+            let deckitem = NSMenuItem(title: String(format: "%d Decks", n), action: #selector(self.set_number_of_decks(_:)), keyEquivalent: "")
+            deckitem.target = self
+            deckitem.identifier = NSUserInterfaceItemIdentifier(String(format: "%d", n))
+            self.n_deck_items.append(deckitem)
+            rv.append(deckitem)
+        }
+        
+        rv.append(NSMenuItem.separator())
+        for n in [1,2,4] {
+            let ttl = (n==1) ? "1 Suit" : String(format: "%d Suits", n)
+            let suititem = NSMenuItem(title: ttl, action: #selector(self.set_number_of_suits(_:)), keyEquivalent: "")
+            suititem.target = self
+            suititem.identifier = NSUserInterfaceItemIdentifier(String(format: "%d", n))
+            self.n_suit_items.append(suititem)
+            rv.append(suititem)
+        }
+        
+        return rv
+    }
+    
+    @objc func set_number_of_decks(_ sender: NSMenuItem) {
+        if let ident = sender.identifier {
+            
+            var n = Int(ident.rawValue) ?? 2
+            if n < 2 {
+                n = 2
+            }
+            self.store_user_setting("n_decks", n)
+            self.redeal()
+        }
+    }
+    
+    @objc func set_number_of_suits(_ sender: NSMenuItem) {
+        if let ident = sender.identifier {
+            
+            let n = Int(ident.rawValue) ?? 2
+            self.store_user_setting("n_suits", n)
+            self.redeal()
+            
+        }
     }
 }
