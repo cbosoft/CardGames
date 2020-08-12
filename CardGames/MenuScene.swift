@@ -72,17 +72,7 @@ class MenuScene : SKScene {
     }
     
     func spider_clicked() {
-        if let view = self.view {
-            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
-                self.run(SKAction.fadeOut(withDuration: 0.3))
-                scene.TableType = SpiderSolitaireTable.self
-                scene.decktype = SingleSuitDeck.self
-                scene.scaleMode = .aspectFit
-                scene.run(SKAction.fadeOut(withDuration: 0.0))
-                view.presentScene(scene)
-                scene.run(SKAction.fadeIn(withDuration: 0.3))
-            }
-        }
+        self.show_game(game_type: SpiderSolitaireTable.self)
     }
     
     func show_game(game_type: Table.Type) {

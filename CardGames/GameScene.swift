@@ -31,14 +31,14 @@ class GameScene: SKScene {
     
     var table: Table? = nil
     var TableType: Table.Type = SolitaireTable.self
-    var decktype: Deck.Type = Deck.self
     var help: SKNode? = nil
     let help_text: [String] = ["r: Re-deal", "a: auto-complete", "m: Menu"]
     
+    // MARK: didMove
     override func didMove(to view: SKView) {
         // called when view is opened?
         
-        self.table = self.TableType.init(size: size, decktype: self.decktype)
+        self.table = self.TableType.init(size: size)
         self.addChild(table!)
         
         let right_click_rec = NSClickGestureRecognizer(target: self, action: #selector(self.rightClicked))

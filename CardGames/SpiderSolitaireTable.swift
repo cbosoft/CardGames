@@ -53,8 +53,8 @@ class SpiderSolitaireTable : Table {
     
     
     // MARK: Init
-    required init(size: CGSize, decktype: Deck.Type) {
-        super.init(size: size, decktype: decktype)
+    required init(size: CGSize) {
+        super.init(size: size)
         self.game_name = "Spider Solitaire"
         
         for _ in 0..<self.n_decks {

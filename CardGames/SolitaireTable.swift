@@ -41,14 +41,14 @@ class SolitaireTable: Table {
     private var flip_item: NSMenuItem = NSMenuItem()
     
     // MARK: Init
-    required init(size: CGSize, decktype: Deck.Type) {
+    required init(size: CGSize) {
         
         let spacing: CGFloat = size.width/8.0
         let margin: CGFloat = spacing*2.0/3.0
         let toprow_y: CGFloat = 0.75*size.height
         
         self.deck_stack = DeckStack(x: margin, y: toprow_y, spacing: spacing)
-        super.init(size: size, decktype: decktype)
+        super.init(size: size)
         
         self.game_name = "Solitaire"
         self.add_deck()
