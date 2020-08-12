@@ -248,8 +248,20 @@ class Table: SKNode {
         auto_complete_item.keyEquivalentModifierMask = NSEvent.ModifierFlags(rawValue: 0)
         return [redeal_item, auto_complete_item]
     }
+    
+    private func complete_user_setting_key(_ key: String) -> String {
+        return String(format: "%@_%@", self.game_name, key)
     }
     
-    // TODO: func to read setting from datastore
-    // TODO func to save setting to datastore
+    func read_user_setting(_ key: String) -> Any? {
+        let defaults = UserDefaults.standard
+        let complete_key = self.complete_user_setting_key(key)
+        return defaults.object(forKey: complete_key)
+    }
+
+    func store_user_setting(_ key: String, _ value: Any) {
+        let defaults = UserDefaults.standard
+        let complete_key = self.complete_user_setting_key(key)
+        defaults.set(value, forKey: complete_key)
+    }
 }
