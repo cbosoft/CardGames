@@ -52,9 +52,16 @@ class GameScene: SKScene {
             let game_menu = menu.item(at: 1)!
             game_menu.submenu?.removeAllItems()
             game_menu.submenu?.title = self.table!.game_name
-            let items = self.table!.get_menu()
-            for item in items {
-                if let submenu = game_menu.submenu {
+            let back_to_menu_item = NSMenuItem(title: "Return to Menu", action: #selector(self.back_to_menu(_:)), keyEquivalent: "m")
+            back_to_menu_item.keyEquivalentModifierMask = NSEvent.ModifierFlags(rawValue: 0)
+            back_to_menu_item.target = self
+            
+            if let submenu  = game_menu.submenu {
+                submenu.addItem(back_to_menu_item)
+                submenu.addItem(NSMenuItem.separator())
+                
+                let items = self.table!.get_menu()
+                for item in items {
                     submenu.addItem(item)
                 }
             }
@@ -152,6 +159,10 @@ class GameScene: SKScene {
             self.table?.redeal()
             self.table?.run(SKAction.fadeIn(withDuration: 0.2))
         }
+    }
+    
+    @objc func back_to_menu(_ sender: Any) {
+        self.back_to_menu()
     }
     
     func back_to_menu() {

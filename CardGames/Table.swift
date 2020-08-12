@@ -62,6 +62,11 @@ class Table: SKNode {
     
     // MARK: Redeal
     // Called to reset the game to a starting condition
+    
+    @objc func redeal(_ sender: Any) {
+        self.redeal()
+    }
+    
     func redeal () {
         for deck in self.decks {
             deck.reset()
@@ -218,6 +223,10 @@ class Table: SKNode {
         fatalError("Table.auto_complete_one() not implemented!")
     }
     
+    @objc func auto_complete(_ sender: Any) {
+        self.auto_complete()
+    }
+    
     func auto_complete() {
         
         if self.auto_complete_one() {
@@ -229,7 +238,16 @@ class Table: SKNode {
     
     // MARK: User Settings
     func get_menu() -> [NSMenuItem] {
-        return []
+        let redeal_item = NSMenuItem(title: "Redeal", action: #selector(self.redeal(_:)), keyEquivalent: "r")
+        redeal_item.target = self
+        redeal_item.keyEquivalentModifierMask = NSEvent.ModifierFlags(rawValue: 0)
+        
+        // TODO autocomplete
+        let auto_complete_item = NSMenuItem(title: "Complete", action: #selector(self.auto_complete(_:)), keyEquivalent: "a")
+        auto_complete_item.target = self
+        auto_complete_item.keyEquivalentModifierMask = NSEvent.ModifierFlags(rawValue: 0)
+        return [redeal_item, auto_complete_item]
+    }
     }
     
     // TODO: func to read setting from datastore
