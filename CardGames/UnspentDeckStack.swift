@@ -50,12 +50,13 @@ class UnspentDeckStack: CardStack {
             card.isHidden = true
         }
         
-        var start_index = self.cards.count - self.number_left
+        
+        
+        let number_shown = self.cards.count/self.visible_stacks.count
+        var start_index = self.cards.count - number_shown
         if start_index < 0 {
             start_index = 0
         }
-        
-        let number_shown = self.cards.count - start_index
         let offset: CGFloat = 20.0
         for i in start_index..<self.cards.count {
             let card = self.cards[i]
