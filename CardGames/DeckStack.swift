@@ -29,13 +29,15 @@ import Foundation
 
 class DeckStack: CardStack {
     private let number_left: Int = 3
-    private var number_flipped: Int
     private var spacing: CGFloat
     private var index: Int = 0
     private var last_taken: Card? = nil
     
     private var flipped_pile: [Card] = []
     private var hidden_pile: [Card] = []
+    
+    // settings
+    var number_flipped: Int
     
     init(x: CGFloat, y: CGFloat, spacing: CGFloat, number_flipped: Int = 1) {
         self.number_flipped = number_flipped
