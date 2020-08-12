@@ -38,14 +38,18 @@ class SolitaireTable: Table {
         }
     }
     
+    private var flip_item: NSMenuItem = NSMenuItem()
+    
     // MARK: Init
     required init(size: CGSize, decktype: Deck.Type) {
         
         let spacing: CGFloat = size.width/8.0
         let margin: CGFloat = spacing*2.0/3.0
         let toprow_y: CGFloat = 0.75*size.height
+        
         self.deck_stack = DeckStack(x: margin, y: toprow_y, spacing: spacing)
         super.init(size: size, decktype: decktype)
+        
         self.game_name = "Solitaire"
         self.add_deck()
         self.addChild(self.deck_stack)
@@ -80,6 +84,7 @@ class SolitaireTable: Table {
     override func redeal() {
         super.redeal()
         
+        self.deck_stack.number_flipped = self.read_user_setting("flip_cards") as? Int ?? 1
         for i in 0..<self.visible_stacks.count {
             let n = i+1
             for _ in 0..<n {
@@ -132,5 +137,28 @@ class SolitaireTable: Table {
         
         
         return false
+    }
+    
+    // MARK: Menu
+    
+    override func get_menu() -> [NSMenuItem] {
+        var rv = super.get_menu()
+        
+        rv.append(NSMenuItem.separator())
+        let n = (self.read_user_setting("flip_cards") as? Int ?? 1) == 1 ? 3 : 1
+
+        self.flip_item = NSMenuItem(title: String(format: "Draw %d", n), action: #selector(menu_flip_toggle(_:)), keyEquivalent: "")
+        self.flip_item.target = self
+        rv.append(self.flip_item)
+        
+        return rv
+    }
+    
+    @objc func menu_flip_toggle(_ sender: NSMenuItem) {
+        let n = self.read_user_setting("flip_cards") as? Int ?? 1
+        let new_title = String(format: "Draw %d", n)
+        self.store_user_setting("flip_cards", (n == 1) ? 3 : 1)
+        self.flip_item.title = new_title
+        
     }
 }
