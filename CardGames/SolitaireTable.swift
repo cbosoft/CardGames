@@ -159,6 +159,6 @@ class SolitaireTable: Table {
         let new_title = String(format: "Draw %d", n)
         self.store_user_setting("flip_cards", (n == 1) ? 3 : 1)
         self.flip_item.title = new_title
-        
+        self.redeal()
     }
 }
