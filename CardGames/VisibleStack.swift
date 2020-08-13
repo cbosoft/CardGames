@@ -32,7 +32,7 @@ class VisibleStack: CardStack {
     private let maximum_offset: CGFloat = 35.0
     var offset: CGFloat {
         get {
-            let height = self.scene?.size.height ?? 768
+            let height = (self.scene?.size.height ?? 768)*0.5
             let offset = height / CGFloat(self.cards.count)
             return offset > self.maximum_offset ? self.maximum_offset : offset
         }
