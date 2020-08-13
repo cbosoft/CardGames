@@ -33,9 +33,9 @@ class SameSuitVisibleStack : VisibleStack {
         if let last = self.cards.last {
             
             // cards not in same suit not allowed
-            if card.suit != last.suit {
-                return false
-            }
+            //if card.suit != last.suit {
+            //    return false
+            //}
             
             // card not previous value not allowed (i.e. 2 on 3, J on Q)
             if let prev = Deck.prev_in_sequence(value: last.value){
@@ -90,9 +90,9 @@ class SameSuitWildVisibleStack : SameSuitVisibleStack {
         if let last = self.cards.last {
             
             // cards not in same suit not allowed
-            if card.suit != last.suit {
-                return false
-            }
+            //if card.suit != last.suit {
+            //    return false
+            //}
             
             // card not previous value not allowed (i.e. 2 on 3, J on Q)
             if let prev = Deck.prev_in_sequence(value: last.value){

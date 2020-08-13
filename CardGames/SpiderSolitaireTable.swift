@@ -65,6 +65,7 @@ class SpiderSolitaireTable : Table {
         for i in 0..<10 {
             let visible_x: CGFloat = self.margin + CGFloat(i)*self.spacing
             let stack = SameSuitWildVisibleStack(x: visible_x, y: toprow_y)
+            stack.same_suit_pickup = true
             self.visible_stacks.append(stack)
             self.card_stacks.append(stack)
             self.addChild(stack)

@@ -30,6 +30,9 @@ import Foundation
 class VisibleStack: CardStack {
     
     private let maximum_offset: CGFloat = 35.0
+    var same_suit_pickup: Bool = false
+    
+    
     var offset: CGFloat {
         get {
             let height = (self.scene?.size.height ?? 768)*0.5
@@ -153,12 +156,23 @@ class VisibleStack: CardStack {
                 return nil
             }
             
+            
+            
             // can't take stack containing out-of-sequence cards
             if i < self.cards.count-1 {
                 let next = self.cards[i+1]
                 if next.value != Deck.prev_in_sequence(value: card.value) {
                     return nil
                 }
+                
+                // can't take card with same suit as prev, unless self.same_suit_pickup is set
+                if ((next.suit != card.suit) && self.same_suit_pickup) {
+                    return nil
+                }
+                else if ((next.suit == card.suit) && !self.same_suit_pickup) {
+                    return nil
+                }
+                
             }
             rv.cards.append(card)
         }
