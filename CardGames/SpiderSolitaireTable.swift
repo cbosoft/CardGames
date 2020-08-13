@@ -87,6 +87,8 @@ class SpiderSolitaireTable : Table {
         self.n_decks = self.read_user_setting("n_decks") as? Int ?? 2
         let n_suits = self.read_user_setting("n_suits") as? Int ?? 2
         
+        self.completed_stacks.removeAll()
+        
         switch n_suits {
         case 1:
             self.DeckType = SingleSuitDeck.self
