@@ -125,7 +125,6 @@ class SpiderSolitaireTable : Table {
     
     // MARK: Win condition
     override func check_has_won() -> Bool {
-        // TODO
         // Check if any stack contains KQJ1098765432A, move to complete pile
         
         for stack in self.visible_stacks {
