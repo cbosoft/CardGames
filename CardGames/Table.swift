@@ -37,6 +37,7 @@ class Table: SKNode, Themeable {
     var source_stack: CardStack? = nil
     var size: CGSize
     var game_name = "unset"
+    var undo_stack: [Move] = []
     
     var big_label: SKLabelNode
     
@@ -133,7 +134,7 @@ class Table: SKNode, Themeable {
             for stack in self.card_stacks {
                 if let z = stack.point_hits(pt: here) {
                     if z > selected_z {
-                        if ObjectIdentifier(stack) != ObjectIdentifier(self.selected_card!) {
+                        if ObjectIdentifier(stack) != ObjectIdentifier(card) {
                             destination_stack = stack
                             selected_z = z
                         }
@@ -142,13 +143,29 @@ class Table: SKNode, Themeable {
             }
             
             if destination_stack == self.source_stack! {
+                // return card to source (no move attempted)
                 self.source_stack!.put_card(card)
             }
-            else if !destination_stack.add_card(self.selected_card!) {
-                // move failed: return to source
-                print("move failed: return to source")
-                self.source_stack!.put_card(self.selected_card!)
-                destination_stack = self.source_stack!
+            else {
+                if destination_stack.add_card(card) {
+                    // move card to dest succeeded
+                    let move: Move
+                    if let card = card as? Card {
+                        move = CardMove(card: card, source: self.source_stack!, destination: destination_stack)
+                    }
+                    else if let stack = card as? CardStack {
+                        move = StackMove(stack: stack.cards, source: self.source_stack!, destination: destination_stack)
+                    }
+                    else {
+                        fatalError("Move not recognised!")
+                    }
+                    self.undo_stack.append(move)
+                }
+                else {
+                    // move failed: return to source
+                    self.source_stack!.put_card(self.selected_card!)
+                    destination_stack = self.source_stack!
+                }
             }
             
             if destination_stack == self.source_stack! {
@@ -245,7 +262,10 @@ class Table: SKNode, Themeable {
         
         let auto_complete_item = NSMenuItem(title: "Complete", action: #selector(self.auto_complete(_:)), keyEquivalent: "c")
         auto_complete_item.target = self
-        return [redeal_item, auto_complete_item]
+        
+        let undo_item = NSMenuItem(title: "Undo", action: #selector(self.undo(_:)), keyEquivalent: "z")
+        undo_item.target = self
+        return [undo_item, redeal_item, auto_complete_item]
     }
     
     private func complete_user_setting_key(_ key: String) -> String {
@@ -269,6 +289,14 @@ class Table: SKNode, Themeable {
     func recolour() {
         for deck in self.decks {
             deck.recolour()
+        }
+    }
+    
+    // MARK: Undo
+    @objc func undo(_ sender: Any) {
+        if let move = self.undo_stack.last {
+            move.undo()
+            self.undo_stack.removeLast()
         }
     }
 }
