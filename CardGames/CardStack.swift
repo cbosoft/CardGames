@@ -31,6 +31,10 @@ enum StackError: Error {
     case cardNotPresent
 }
 
+func stack_rect(_ off: CGFloat = 5.0) -> CGRect {
+    return CGRect(x: off, y: off, width: Card.size.width-off-off, height: Card.size.height-off-off)
+}
+
 class CardStack: CardPosition {
     
     var cards: [Card] = []
@@ -39,9 +43,7 @@ class CardStack: CardPosition {
         super.init(x: x, y: y)
         
         if has_border {
-            let border = SKShapeNode(rect:
-                CGRect(origin: CGPoint(x: 5, y: 5), // position relative to /this/ node
-                    size: CGSize(width: self.size.width-10, height: self.size.height-10)))
+            let border = SKShapeNode(rect: stack_rect())
             border.fillColor = .clear
             border.strokeColor = .white
             border.lineWidth = 1.0

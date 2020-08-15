@@ -44,14 +44,13 @@ class DeckStack: CardStack {
         self.spacing = spacing
         
         super.init(x: x, y: y)
-        let flipped_pile_border = SKShapeNode(rect: CGRect(x: 0, y: 0, width: Card.size.width, height: Card.size.height))
+        let flipped_pile_border = SKShapeNode(rect: stack_rect())
+        flipped_pile_border.position.x += spacing
+        flipped_pile_border.zPosition = -1.0
         flipped_pile_border.fillColor = .clear
         flipped_pile_border.strokeColor = .lightGray
         flipped_pile_border.lineWidth = 1.0
         self.addChild(flipped_pile_border)
-        
-        // position relative to main deck
-        flipped_pile_border.position = CGPoint(x: self.spacing, y: 0)
         
 
     }
