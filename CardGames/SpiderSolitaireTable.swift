@@ -146,11 +146,16 @@ class SpiderSolitaireTable : Table {
                             // complete stack from $start_index to (i+1)
                             let dx = CGFloat(self.completed_stacks.count)*self.spacing
                             let new_completed = TopStack(x: self.margin+dx, y: self.margin)
-                            let completed_temp = stack.take_from(index: start_index)!
-                            for card in completed_temp.cards {
-                                card.isHidden = true
-                                new_completed.cards.append(card)
-                                card.run(action: SKAction.move(to: new_completed.get_next_card_position(), duration: 0.2))
+                            if let completed_temp = stack.take_from(index: start_index) {
+                                for card in completed_temp.cards {
+                                    card.isHidden = true
+                                    new_completed.cards.append(card)
+                                    card.run(action: SKAction.move(to: new_completed.get_next_card_position(), duration: 0.2))
+                                }
+                            }
+                            else {
+                                print("completed temp failure")
+                                return false
                             }
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
