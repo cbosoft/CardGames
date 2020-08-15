@@ -151,10 +151,17 @@ class Card: CardPosition, Themeable {
         return lhs.value == rhs.value && lhs.suit == rhs.suit
     }
     
-    override func tap() {
+    override func tap() -> Move? {
         if !self.is_face_up {
+            let before = self.is_face_up
             self.is_face_up = true
+            
+            if !before {
+                return FlipMove(card: self)
+            }
         }
+        
+        return nil
     }
     
     func recolour() {

@@ -143,8 +143,9 @@ class DeckStack: CardStack {
         self.cards[self.index].is_face_up = true
     }
     
-    override func post_move() {
+    override func post_move() -> Move? {
         //self.cards[self.index].set_flipped(true)
+        return nil
     }
     
     override func take_card() -> Card? {

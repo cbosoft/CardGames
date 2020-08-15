@@ -169,10 +169,14 @@ class Table: SKNode, Themeable {
             }
             
             if destination_stack == self.source_stack! {
-                card.tap()
+                if let move = card.tap() {
+                    self.undo_stack.append(move)
+                }
             }
             else {
-                self.source_stack!.post_move()
+                if let move = self.source_stack!.post_move() {
+                    self.undo_stack.append(move)
+                }
             }
             
             card.run(action: SKAction.scale(to: 1.0, duration: 0.1))

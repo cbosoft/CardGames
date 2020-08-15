@@ -92,14 +92,14 @@ class SolitaireTable: Table {
             }
             //self.visible_stacks[i].cards.last!.set_flipped(true)
             self.visible_stacks[i].display_cards()
-            self.visible_stacks[i].post_move()
+            _ = self.visible_stacks[i].post_move()
         }
         
         for _ in 0..<self.deck.to_draw.count {
             self.deck_stack.put_card(self.deck.draw())
         }
         self.deck_stack.display_cards()
-        self.deck_stack.post_move()
+        _ = self.deck_stack.post_move()
     }
     
     // MARK: Win condition
@@ -126,7 +126,9 @@ class SolitaireTable: Table {
                         card.run(action: SKAction.move(to: dest.position, duration: self.autocomplete_move_time))
                         DispatchQueue.main.asyncAfter(deadline: .now() + self.autocomplete_move_time) {
                             dest.add_card(card)
-                            source.post_move()
+                            if let move = source.post_move() {
+                                self.undo_stack.append(move)
+                            }
                             self.game_over_check()
                         }
                         return true

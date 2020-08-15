@@ -115,7 +115,7 @@ class SpiderSolitaireTable : Table {
         
         for stack in self.visible_stacks {
             stack.display_cards()
-            stack.post_move()
+            _ = stack.post_move()
         }
         
         for _ in 0..<self.deck.to_draw.count {

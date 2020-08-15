@@ -84,8 +84,7 @@ class CardPosition: SKNode {
         return String(format: "%x", uid)
     }
     
-    func tap() {
-        // do nothing
-        print(self.uid(), "tapped")
+    func tap() -> Move? {
+        return nil
     }
 }

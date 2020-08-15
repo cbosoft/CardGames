@@ -70,6 +70,11 @@ class StackMove: Move {
         // TODO
         // - remove cards from destination
         // - put them back on source stack
+        
+        for card in stack {
+            try! destination.remove_card(card)
+            source.put_card(card)
+        }
     }
 }
 

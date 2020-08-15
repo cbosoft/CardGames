@@ -134,11 +134,18 @@ class CardStack: CardPosition {
         }
     }
     
-    func post_move() {
+    func post_move() -> Move? {
         // called after a card from this stack has been moved away
         if let last = self.cards.last {
+            let before = last.is_face_up
             last.is_face_up = true
+            
+            if !before {
+                return FlipMove(card: last)
+            }
         }
+        
+        return nil
     }
     
     func top_card() -> Card? {
