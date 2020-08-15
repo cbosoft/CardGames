@@ -40,8 +40,8 @@ class CardStack: CardPosition {
         
         if has_border {
             let border = SKShapeNode(rect:
-                CGRect(origin: CGPoint.zero, // position relative to /this/ node
-                    size: self.size))
+                CGRect(origin: CGPoint(x: 5, y: 5), // position relative to /this/ node
+                    size: CGSize(width: self.size.width-10, height: self.size.height-10)))
             border.fillColor = .clear
             border.strokeColor = .white
             border.lineWidth = 1.0
