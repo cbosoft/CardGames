@@ -82,6 +82,8 @@ class GameScene: SKScene, Themeable {
         }
     }
     
+    
+    // MARK: Init Help Menu
     func init_help() {
         if self.help != nil {
             return
@@ -109,6 +111,7 @@ class GameScene: SKScene, Themeable {
         self.help = help
     }
     
+    // MARK: Mouse and touch
     
     func touchDown(atPoint pos : CGPoint) {
         if let table = self.table {
@@ -154,6 +157,8 @@ class GameScene: SKScene, Themeable {
         self.auto_complete()
     }
     
+    // MARK: Menu commands
+    
     func redeal() {
         self.table?.run(SKAction.fadeOut(withDuration: 0.2))
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -195,6 +200,7 @@ class GameScene: SKScene, Themeable {
         self.table?.auto_complete()
     }
     
+    // MARK: Key Input
     override func keyDown(with event: NSEvent) {
         // https://gist.github.com/swillits/df648e87016772c7f7e5dbed2b345066
         switch event.keyCode {
