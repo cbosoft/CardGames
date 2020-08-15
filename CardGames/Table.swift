@@ -242,7 +242,6 @@ class Table: SKNode, Themeable {
         let redeal_item = NSMenuItem(title: "Redeal", action: #selector(self.redeal(_:)), keyEquivalent: "r")
         redeal_item.target = self
         
-        // TODO autocomplete
         let auto_complete_item = NSMenuItem(title: "Complete", action: #selector(self.auto_complete(_:)), keyEquivalent: "c")
         auto_complete_item.target = self
         return [redeal_item, auto_complete_item]
