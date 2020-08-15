@@ -65,6 +65,7 @@ class GameScene: SKScene, Themeable {
         
     }
     
+    // MARK: willMove
     override func willMove(from view: SKView) {
         // remove game menu from bar
         if let app = NSApp.delegate {
