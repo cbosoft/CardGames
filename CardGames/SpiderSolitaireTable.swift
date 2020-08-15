@@ -101,7 +101,7 @@ class SpiderSolitaireTable : Table {
             break
         }
         
-        self.decks  = []
+        self.decks.removeAll()
         for _ in 0..<self.n_decks {
             self.add_deck()
         }

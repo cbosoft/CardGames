@@ -92,7 +92,11 @@ class Deck: SKNode, Themeable {
     }
     
     func reset() {
-        self.to_draw = self.cards
+        self.to_draw.removeAll()
+        self.removeAllChildren()
+        self.cards.removeAll()
+        self.fill()
+    }
     
     func recolour() {
         for card in self.cards {
