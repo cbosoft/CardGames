@@ -27,7 +27,7 @@
 import SpriteKit
 import Foundation
 
-class Table: SKNode {
+class Table: SKNode, Themeable {
     
     // MARK: Properties
     var DeckType: Deck.Type = Deck.self
@@ -262,5 +262,13 @@ class Table: SKNode {
         let defaults = UserDefaults.standard
         let complete_key = self.complete_user_setting_key(key)
         defaults.set(value, forKey: complete_key)
+    }
+    
+    // MARK: Theming
+    
+    func recolour() {
+        for deck in self.decks {
+            deck.recolour()
+        }
     }
 }

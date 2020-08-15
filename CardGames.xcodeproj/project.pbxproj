@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83277BFF24E730D700DBA890 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83277BFE24E730D700DBA890 /* Theme.swift */; };
 		8358781624D9C9A700A3AFCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358781524D9C9A700A3AFCA /* AppDelegate.swift */; };
 		8358781824D9C9A700A3AFCA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8358781724D9C9A700A3AFCA /* GameScene.sks */; };
 		8358781A24D9C9A700A3AFCA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8358781924D9C9A700A3AFCA /* Actions.sks */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83277BFE24E730D700DBA890 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		8358781224D9C9A700A3AFCA /* CardGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8358781524D9C9A700A3AFCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8358781724D9C9A700A3AFCA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				8358781524D9C9A700A3AFCA /* AppDelegate.swift */,
 				8358781F24D9C9AA00A3AFCA /* Assets.xcassets */,
 				8358784724DAAAAB00A3AFCA /* Card.swift */,
+				83277BFE24E730D700DBA890 /* Theme.swift */,
 				8358782524D9C9AA00A3AFCA /* CardGames.entitlements */,
 				8358784924DAE4C800A3AFCA /* CardPosition.swift */,
 				8358784B24DAF66900A3AFCA /* CardStack.swift */,
@@ -344,6 +347,7 @@
 				8384822024E2D3E000EA81D7 /* TwoSuitDeck.swift in Sources */,
 				8358784F24DAFB6600A3AFCA /* VisibleStack.swift in Sources */,
 				8358785724DB0D4300A3AFCA /* DeckStack.swift in Sources */,
+				83277BFF24E730D700DBA890 /* Theme.swift in Sources */,
 				8358784A24DAE4C800A3AFCA /* CardPosition.swift in Sources */,
 				8384822224E2E35C00EA81D7 /* UnspentDeckStack.swift in Sources */,
 				8358786524DD926D00A3AFCA /* MenuButton.swift in Sources */,

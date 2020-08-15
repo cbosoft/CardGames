@@ -30,8 +30,23 @@ import Foundation
 class MenuScene : SKScene {
     
     private var buttons: [MenuButton] = []
+    private var game_scene: GameScene? = nil
     
     override func didMove(to view: SKView) {
+        self.game_scene = SKScene(fileNamed: "GameScene") as? GameScene
+        
+        if let app = NSApp.delegate as? AppDelegate {
+            if let menu = app.mainMenu {
+                let theme_menu = menu.item(at: 1)!
+                theme_menu.submenu?.removeAllItems()
+                
+                for theme_item in get_themes_menu_items() {
+                    theme_item.target = self
+                    theme_item.action = #selector(self.theme_changed_callback(_:))
+                    theme_menu.submenu?.addItem(theme_item)
+                }
+            }
+        }
         
         let texts_and_callbacks = [
             ("Solitaire", self.solitaire_clicked),
@@ -77,7 +92,7 @@ class MenuScene : SKScene {
     
     func show_game(game_type: Table.Type) {
         if let view = self.view {
-            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
+            if let scene = self.game_scene {
                 self.run(SKAction.fadeOut(withDuration: 0.3))
                 scene.TableType = game_type
                 scene.scaleMode = .aspectFit
@@ -106,6 +121,17 @@ class MenuScene : SKScene {
         let point = event.location(in: self)
         for button in self.buttons {
             button.try_mouse_clicked(point: point)
+        }
+    }
+    
+    @objc func theme_changed_callback(_ sender: NSMenuItem) {
+        if let ident = sender.identifier {
+            let store = UserDefaults.standard
+            store.set(ident.rawValue, forKey: "theme")
+        }
+        
+        if let game_scene = self.game_scene {
+            game_scene.recolour()
         }
     }
 }

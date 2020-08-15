@@ -27,7 +27,7 @@
 import SpriteKit
 import Foundation
 
-class Card: CardPosition {
+class Card: CardPosition, Themeable {
     
     static var size = CGSize(width: 80, height: 120)
     
@@ -41,10 +41,11 @@ class Card: CardPosition {
     }
     private var flipped: Bool = false
     
-    private var bg_colour = SKColor.white //init(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
+    private var front_colour = SKColor.white
     private var back_colour = SKColor.gray
-    private var red_colour = SKColor.init(red: 0.8, green: 0.1, blue: 0.1, alpha: 1.0)
-    private var black_colour = SKColor.init(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
+    private var red_colour = SKColor.red
+    private var black_colour = SKColor.black
+    private var border_colour: SKColor? = SKColor.black
     
     private let labels: [SKLabelNode]
     private let bg: SKShapeNode
@@ -65,13 +66,12 @@ class Card: CardPosition {
             rect: CGRect(
                 origin: CGPoint(x: 0, y: 0),
                 size: Card.size),
-            cornerRadius: 0.0)
-        self.bg.fillColor = self.bg_colour
+            cornerRadius: 5.0)
+        self.bg.fillColor = self.front_colour
         
         super.init(x: x, y: y)
         
-        self.bg.strokeColor = .white //self.scene?.backgroundColor ?? SKColor.black
-        //self.black_colour = self.bg.strokeColor
+        self.bg.strokeColor = self.border_colour ?? self.front_colour
         self.bg.lineWidth = 1.0
         
         self.addChild(top_label)
@@ -116,13 +116,17 @@ class Card: CardPosition {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func draw_flipped() {
+        self.set_flipped(self.flipped)
+    }
+    
     func set_flipped(_ v: Bool) {
         
         if v {
             for label in self.labels {
                 label.isHidden = false
             }
-            self.bg.fillColor = self.bg_colour
+            self.bg.fillColor = self.front_colour
         }
         else {
             for label in self.labels {
@@ -130,6 +134,8 @@ class Card: CardPosition {
             }
             self.bg.fillColor = self.back_colour
         }
+        
+        self.bg.strokeColor = self.border_colour ?? self.bg.fillColor
         self.flipped = v
     }
     
@@ -149,6 +155,21 @@ class Card: CardPosition {
         if !self.flipped {
             self.set_flipped(true)
         }
+    }
+    
+    func recolour() {
+        let theme = get_current_theme()
+        self.front_colour = theme.card_front
+        self.back_colour = theme.card_back
+        self.red_colour = theme.suit_red
+        self.black_colour = theme.suit_black
+        self.border_colour = theme.card_border
+        
+        for lbl in self.labels {
+            let isred = Deck.is_red(suit: self.suit)
+            lbl.color = isred ? self.red_colour : self.black_colour
+        }
+        self.draw_flipped()
     }
     
 }

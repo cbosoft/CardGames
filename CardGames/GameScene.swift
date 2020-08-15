@@ -27,7 +27,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, Themeable {
     
     var table: Table? = nil
     var TableType: Table.Type = SolitaireTable.self
@@ -36,7 +36,9 @@ class GameScene: SKScene {
     
     // MARK: didMove
     override func didMove(to view: SKView) {
-        // called when view is opened?
+        // called when view is opened
+        let theme = get_current_theme()
+        self.backgroundColor = theme.background
         
         self.table = self.TableType.init(size: size)
         self.addChild(table!)
@@ -47,9 +49,8 @@ class GameScene: SKScene {
         
         // add game menu to menu bar
         if let app = NSApp.delegate {
-            print("adding menu item")
             let menu = (app as! AppDelegate).mainMenu!
-            let game_menu = menu.item(at: 1)!
+            let game_menu = menu.item(at: 2)!
             game_menu.submenu?.removeAllItems()
             game_menu.submenu?.title = self.table!.game_name
             let back_to_menu_item = NSMenuItem(title: "Return to Menu", action: #selector(self.back_to_menu(_:)), keyEquivalent: "m")
@@ -215,8 +216,13 @@ class GameScene: SKScene {
         }
     }
     
-    
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+    // MARK: Recolour
+    func recolour() {
+        let theme = get_current_theme()
+        self.backgroundColor = theme.background
+        
+        if let table = self.table {
+            table.recolour()
+        }
     }
 }

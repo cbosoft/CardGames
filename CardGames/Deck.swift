@@ -27,7 +27,7 @@
 import SpriteKit
 import Foundation
 
-class Deck: SKNode {
+class Deck: SKNode, Themeable {
     
     var suits: [String] = ["Spades", "Clubs", "Diamonds", "Hearts"]
     static let values: [String] = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
@@ -93,10 +93,10 @@ class Deck: SKNode {
     
     func reset() {
         self.to_draw = self.cards
+    
+    func recolour() {
         for card in self.cards {
-            card.alpha = 1.0
-            card.isHidden = true
-            card.set_flipped(false)
+            card.recolour()
         }
     }
 }

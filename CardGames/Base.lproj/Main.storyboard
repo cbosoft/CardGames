@@ -41,6 +41,22 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Themes" id="4IA-E9-HR4">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Themes" id="HlM-wf-i57">
+                                    <items>
+                                        <menuItem title="Item 1" id="faF-94-yms">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Item 2" id="h6P-BO-vzY">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Item 3" id="tWA-Bp-n3Z">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title=" " hidden="YES" identifier="game_settings" id="TFO-Eu-MAS" userLabel="Game">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title=" " id="cm2-UQ-UsP"/>
