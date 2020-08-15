@@ -75,7 +75,7 @@ class DeckStack: CardStack {
         let offset: CGFloat = 20
         for i in hidden_start..<self.hidden_pile.count {
             let hidden_card = self.hidden_pile[i]
-            hidden_card.set_flipped(false)
+            hidden_card.is_face_up = false
             hidden_card.isHidden = false
             let j = i - hidden_start
             let dx = -offset*CGFloat(nhidden - j - 1)
@@ -88,7 +88,7 @@ class DeckStack: CardStack {
         }
         for i in flipped_start..<self.flipped_pile.count {
             let flipped_card = self.flipped_pile[i]
-            flipped_card.set_flipped(true)
+            flipped_card.is_face_up = true
             flipped_card.isHidden = false
             //let dx = CGFloat(i - self.number_flipped + 1)*20
             let j = i - flipped_start
@@ -140,7 +140,7 @@ class DeckStack: CardStack {
             self.index = self.cards.count-1
         }
         self.display_cards()
-        self.cards[self.index].set_flipped(true)
+        self.cards[self.index].is_face_up = true
     }
     
     override func post_move() {
@@ -175,7 +175,7 @@ class DeckStack: CardStack {
     
     override func put_card(_ card: CardPosition) {
         if let card = card as? Card {
-            if card.is_flipped() {
+            if card.is_face_up {
                 self.flipped_pile.append(card)
             }
             else {

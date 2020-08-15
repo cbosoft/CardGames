@@ -152,7 +152,7 @@ class VisibleStack: CardStack {
             let card = self.cards[i]
             
             // can't take stack containing an unflipped card
-            if !card.is_flipped() {
+            if !card.is_face_up {
                 return nil
             }
             

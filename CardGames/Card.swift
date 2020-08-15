@@ -39,7 +39,7 @@ class Card: CardPosition, Themeable {
             return Deck.is_red(suit: self.suit) ? "Red" : "Black"
         }
     }
-    private var flipped: Bool = false
+    private var __flipped: Bool = false
     
     private var front_colour = SKColor.white
     private var back_colour = SKColor.gray
@@ -107,7 +107,7 @@ class Card: CardPosition, Themeable {
         
         self.position = CGPoint(x: x, y: y)
         self.isHidden = true
-        self.set_flipped(false)
+        self.is_face_up = false
         
         
     }
@@ -117,30 +117,30 @@ class Card: CardPosition, Themeable {
     }
     
     func draw_flipped() {
-        self.set_flipped(self.flipped)
+        self.is_face_up = self.__flipped
     }
     
-    func set_flipped(_ v: Bool) {
-        
-        if v {
-            for label in self.labels {
-                label.isHidden = false
-            }
-            self.bg.fillColor = self.front_colour
+    var is_face_up: Bool {
+        get {
+            return self.__flipped
         }
-        else {
-            for label in self.labels {
-                label.isHidden = true
+        set(v){
+            self.__flipped = v
+            if v {
+                for label in self.labels {
+                    label.isHidden = false
+                }
+                self.bg.fillColor = self.front_colour
             }
-            self.bg.fillColor = self.back_colour
+            else {
+                for label in self.labels {
+                    label.isHidden = true
+                }
+                self.bg.fillColor = self.back_colour
+            }
+            
+            self.bg.strokeColor = self.border_colour ?? self.bg.fillColor
         }
-        
-        self.bg.strokeColor = self.border_colour ?? self.bg.fillColor
-        self.flipped = v
-    }
-    
-    func is_flipped() -> Bool {
-        return self.flipped
     }
     
     override func run(action: SKAction) {
@@ -152,8 +152,8 @@ class Card: CardPosition, Themeable {
     }
     
     override func tap() {
-        if !self.flipped {
-            self.set_flipped(true)
+        if !self.is_face_up {
+            self.is_face_up = true
         }
     }
     

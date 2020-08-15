@@ -133,7 +133,7 @@ class CardStack: CardPosition {
     func post_move() {
         // called after a card from this stack has been moved away
         if let last = self.cards.last {
-            last.set_flipped(true)
+            last.is_face_up = true
         }
     }
     

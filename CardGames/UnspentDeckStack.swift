@@ -60,7 +60,7 @@ class UnspentDeckStack: CardStack {
         let offset: CGFloat = 20.0
         for i in start_index..<self.cards.count {
             let card = self.cards[i]
-            card.set_flipped(false)
+            card.is_face_up = false
             card.isHidden = false
             let j = i - start_index
             let dx = -offset*CGFloat(number_shown - j - 1)
@@ -85,7 +85,7 @@ class UnspentDeckStack: CardStack {
                 card.position = self.position
                 card.run(action: SKAction.move(to: stack.get_next_card_position(), duration: 0.2))
                 card.isHidden = false
-                card.set_flipped(true)
+                card.is_face_up = true
                 self.cards.removeLast()
             }
             else {

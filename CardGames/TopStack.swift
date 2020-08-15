@@ -42,7 +42,7 @@ class TopStack: CardStack {
         }
         
         if let last = self.cards.last {
-            last.set_flipped(true)
+            last.is_face_up = true
         }
     }
 }
