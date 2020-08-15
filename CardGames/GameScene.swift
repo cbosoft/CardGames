@@ -48,7 +48,6 @@ class GameScene: SKScene, Themeable {
             game_menu.submenu?.removeAllItems()
             game_menu.submenu?.title = self.table!.game_name
             let back_to_menu_item = NSMenuItem(title: "Return to Menu", action: #selector(self.back_to_menu(_:)), keyEquivalent: "m")
-            back_to_menu_item.keyEquivalentModifierMask = NSEvent.ModifierFlags(rawValue: 0)
             back_to_menu_item.target = self
             
             if let submenu  = game_menu.submenu {
