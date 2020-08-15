@@ -203,6 +203,7 @@ class Table: SKNode, Themeable {
     func hide_big_label() {
         self.big_label.run(SKAction.fadeOut(withDuration: 0.5))
     }
+    
     func show_big_label(_ text: String? = nil) {
         let centre: CGPoint
         if let scene = self.scene {
