@@ -96,9 +96,13 @@ class CardStack: CardPosition {
             }
         }
         
-        if index == nil {
+        if let index = index {
+            self.cards.remove(at: index)
+        }
+        else {
             throw StackError.cardNotPresent
         }
+        
     }
     
     func take_card() -> Card? {
