@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		83277BFF24E730D700DBA890 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83277BFE24E730D700DBA890 /* Theme.swift */; };
+		83277C0124E8440F00DBA890 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83277C0024E8440F00DBA890 /* Move.swift */; };
 		8358781624D9C9A700A3AFCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358781524D9C9A700A3AFCA /* AppDelegate.swift */; };
 		8358781824D9C9A700A3AFCA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8358781724D9C9A700A3AFCA /* GameScene.sks */; };
 		8358781A24D9C9A700A3AFCA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8358781924D9C9A700A3AFCA /* Actions.sks */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		83277BFE24E730D700DBA890 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		83277C0024E8440F00DBA890 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		8358781224D9C9A700A3AFCA /* CardGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8358781524D9C9A700A3AFCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8358781724D9C9A700A3AFCA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				8358784B24DAF66900A3AFCA /* CardStack.swift */,
 				8358785024DAFD7200A3AFCA /* Deck.swift */,
 				8358785624DB0D4300A3AFCA /* DeckStack.swift */,
+				83277C0024E8440F00DBA890 /* Move.swift */,
 				8358781724D9C9A700A3AFCA /* GameScene.sks */,
 				8358781B24D9C9A700A3AFCA /* GameScene.swift */,
 				8358782424D9C9AA00A3AFCA /* Info.plist */,
@@ -354,6 +357,7 @@
 				8358786324DD919700A3AFCA /* MenuScene.swift in Sources */,
 				8358784824DAAAAB00A3AFCA /* Card.swift in Sources */,
 				8358785B24DB179500A3AFCA /* SuitedTopStack.swift in Sources */,
+				83277C0124E8440F00DBA890 /* Move.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
