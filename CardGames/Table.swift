@@ -67,6 +67,7 @@ class Table: SKNode, Themeable {
     }
     
     func redeal () {
+        self.run(SKAction.fadeOut(withDuration: 0.0))
         for deck in self.decks {
             deck.reset()
         }
@@ -76,6 +77,7 @@ class Table: SKNode, Themeable {
         }
         self.hide_big_label()
         self.show_decks_and_stacks()
+        self.run(SKAction.fadeIn(withDuration: 0.2))
     }
     
     func add_deck() {
