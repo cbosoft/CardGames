@@ -51,6 +51,8 @@ class CardMove: Move {
         }
         
         self.source.put_card(self.card)
+        
+        destination.display_cards()
     }
 }
 
@@ -75,6 +77,8 @@ class StackMove: Move {
             try! destination.remove_card(card)
             source.put_card(card)
         }
+        
+        destination.display_cards()
     }
 }
 
