@@ -73,11 +73,6 @@ class SpiderSolitaireTable : Table {
     private var completed_stacks: [TopStack] = []
     private var unspent_stack: UnspentDeckStack?
     
-    private var deck: Deck {
-        get {
-            return self.decks[1]
-        }
-    }
     private var spacing: CGFloat {
         get {
             let w = self.scene?.size.width ?? 1024
@@ -141,13 +136,10 @@ class SpiderSolitaireTable : Table {
             break
         }
         
-        self.decks.removeAll()
-        for _ in 0..<self.n_decks {
-            self.add_deck()
-        }
+        self.create_deck(count: n_decks)
         
         for card_index in 0..<54 {
-            let card = Bool(card_index < 52) ? self.decks[0].draw() : self.decks[1].draw()
+            let card = self.deck.draw()
             let stack_index = card_index % 10
             let stack = self.visible_stacks[stack_index]
             stack.put_card(card)

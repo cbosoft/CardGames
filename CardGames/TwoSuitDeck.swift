@@ -28,29 +28,12 @@ import Foundation
 
 class TwoSuitDeck: Deck {
     
-    required init() {
+    required init(count: Int = 1) {
         
-        super.init()
+        super.init(count: count)
         
         self.suits = ["Spades", "Hearts"]
         
-    }
-    
-    override func fill() {
-        for suit in self.suits {
-            for value in Deck.values {
-                let card = Card(suit: suit, value: value)
-                self.cards.append(card)
-                self.to_draw.append(card)
-                self.addChild(card)
-            }
-            for value in Deck.values {
-                let card = Card(suit: suit, value: value)
-                self.cards.append(card)
-                self.to_draw.append(card)
-                self.addChild(card)
-            }
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {

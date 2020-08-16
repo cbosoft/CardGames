@@ -32,11 +32,6 @@ class SolitaireTable: Table {
     private var visible_stacks: [VisibleStack] = []
     private var top_stacks: [SuitedTopStack] = []
     private var deck_stack: DeckStack
-    private var deck: Deck {
-        get {
-            return self.decks[0]
-        }
-    }
     
     private var flip_item: NSMenuItem = NSMenuItem()
     
@@ -51,7 +46,7 @@ class SolitaireTable: Table {
         super.init(size: size)
         
         self.game_name = "Solitaire"
-        self.add_deck()
+        self.create_deck()
         self.addChild(self.deck_stack)
         self.card_stacks.append(deck_stack)
         

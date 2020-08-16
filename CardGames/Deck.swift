@@ -33,10 +33,18 @@ class Deck: SKNode, Themeable {
     static let values: [String] = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
     static let suitname2icon = ["Spades": "♠", "Diamonds": "♦", "Hearts": "♥", "Clubs":"♣"]
     
+    private var __count: Int
+    var count: Int {
+        get {
+            return self.__count
+        }
+    }
+    
     var cards: [Card] = []
     var to_draw: [Card] = []
     
-    required override init() {
+    required init(count: Int = 1) {
+        self.__count = count
         super.init()
     }
     
@@ -45,18 +53,28 @@ class Deck: SKNode, Themeable {
     }
     
     func fill() {
-        for suit in self.suits {
-            for value in Deck.values {
-                let card = Card(suit: suit, value: value)
-                self.cards.append(card)
-                self.to_draw.append(card)
-                self.addChild(card)
+        for _ in 0..<self.count {
+            var cards_added = 0
+            while cards_added < 52 {
+                for suit in self.suits {
+                    for value in Deck.values {
+                        let card = Card(suit: suit, value: value)
+                        self.cards.append(card)
+                        self.to_draw.append(card)
+                        self.addChild(card)
+                        cards_added += 1
+                    }
+                }
             }
         }
+        
+        print("Filled deck with", self.cards.count, "cards (", self.count, "Decks )")
     }
     
     func draw() -> Card {
+        // fill here and not in init so any changes to suit, values by subclass can take hold
         if self.cards.count == 0 {
+            print("FILLING")
             self.fill()
         }
         

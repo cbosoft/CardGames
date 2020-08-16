@@ -31,7 +31,7 @@ class Table: SKNode, Themeable {
     
     // MARK: Properties
     var DeckType: Deck.Type = Deck.self
-    var decks: [Deck] = []
+    var deck: Deck
     var card_stacks: [CardStack] = []
     var selected_card: CardPosition? = nil
     var source_stack: CardStack? = nil
@@ -51,6 +51,7 @@ class Table: SKNode, Themeable {
         self.big_label = SKLabelNode()
         self.big_label.horizontalAlignmentMode = .center
         self.big_label.verticalAlignmentMode = .center
+        self.deck = self.DeckType.init()
         super.init()
         self.big_label.run(SKAction.fadeOut(withDuration: 0.0))
         self.addChild(self.big_label)
@@ -69,9 +70,7 @@ class Table: SKNode, Themeable {
     
     func redeal () {
         self.run(SKAction.fadeOut(withDuration: 0.0))
-        for deck in self.decks {
-            deck.reset()
-        }
+        self.deck.reset()
         for stack in self.card_stacks {
             stack.reset()
             stack.display_cards()
@@ -81,10 +80,9 @@ class Table: SKNode, Themeable {
         self.run(SKAction.fadeIn(withDuration: 0.2))
     }
     
-    func add_deck() {
-        let deck = self.DeckType.init()
-        self.decks.append(deck)
-        self.addChild(deck)
+    func create_deck(count: Int = 1) {
+        self.deck = self.DeckType.init(count: count)
+        self.addChild(self.deck)
     }
     
     // MARK: Pick up card
@@ -208,18 +206,14 @@ class Table: SKNode, Themeable {
         for stack in self.card_stacks {
             stack.run(SKAction.fadeOut(withDuration: 0.5))
         }
-        for deck in self.decks {
-            deck.run(SKAction.fadeOut(withDuration: 1))
-        }
+        self.deck.run(SKAction.fadeOut(withDuration: 1))
     }
     
     func show_decks_and_stacks() {
         for stack in self.card_stacks {
             stack.run(SKAction.fadeIn(withDuration: 0.5))
         }
-        for deck in self.decks {
-            deck.run(SKAction.fadeIn(withDuration: 1))
-        }
+        self.deck.run(SKAction.fadeIn(withDuration: 1))
     }
     
     func hide_big_label() {
@@ -292,9 +286,7 @@ class Table: SKNode, Themeable {
     // MARK: Theming
     
     func recolour() {
-        for deck in self.decks {
-            deck.recolour()
-        }
+        self.deck.recolour()
     }
     
     // MARK: Undo
