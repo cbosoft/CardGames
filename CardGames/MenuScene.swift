@@ -74,6 +74,35 @@ class MenuScene : SKScene {
         let options = [NSTrackingArea.Options.mouseMoved, NSTrackingArea.Options.activeInKeyWindow] as NSTrackingArea.Options
         let tracking_area = NSTrackingArea(rect: view.frame, options: options, owner: self, userInfo: nil)
         view.addTrackingArea(tracking_area)
+        
+        let n = 11
+        var out = false
+        let suits = ["♠", "♥", "♣", "♦"]
+        var idx = 0
+        for xf in 0..<n {
+            for yf in 0..<n {
+                let x = self.size.width * (CGFloat(xf) + 0.5)/CGFloat(n);
+                let y = self.size.height * (CGFloat(yf) + 0.5)/CGFloat(n);
+                let pt = CGPoint(x: x, y: y)
+                let suit = suits[idx]
+                idx += 1
+                idx = idx % suits.count
+                let child = SKLabelNode(text: suit)
+                child.alpha = 0.0
+                child.position = pt
+                self.pulse_icon(lbl: child, out: out)
+                out = !out
+                self.addChild(child)
+            }
+        }
+    }
+    
+    func pulse_icon(lbl: SKLabelNode, dt: Double = 5, out: Bool = true) {
+        lbl.run(SKAction.fadeAlpha(to: out ? 0.05 : 0.2, duration: dt))
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
+            self.pulse_icon(lbl: lbl, dt: dt, out: !out)
+        }
     }
     
     override func willMove(from view: SKView) {
