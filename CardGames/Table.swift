@@ -126,6 +126,7 @@ class Table: SKNode, Themeable {
     // Called when the player is no longer dragging a a card. The card is added to a stack if
     // possible, or returned to the source stack.
     func try_drop_card(here: CGPoint) {
+        // TODO: this function is very long; can we refactor it down?
 
         if let card = self.selected_card {
         
