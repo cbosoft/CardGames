@@ -181,7 +181,6 @@ class SpiderSolitaireTable : Table {
                 }
                 if let start_index = started {
                     // going down the values K->A
-                    // TODO: implement completion undo
                     if next.value == Deck.prev_in_sequence(value: card.value) {
                         if next.value == "A" {
                             // complete stack from $start_index to (i+1)
