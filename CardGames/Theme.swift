@@ -66,7 +66,22 @@ class Theme {
 }
 
 let themes: [String: Theme] = [
-    "Dark": Theme(bg: [0.1, 0.1, 0.1], back: [0.5, 0.5, 0.5], front: [1.0, 1.0, 1.0], border: [0.0, 0.0, 0.0], red: [1.0, 0.0, 0.0], black: [0.0, 0.0, 0.0])
+    "Dark": Theme(
+        bg: [0.1, 0.1, 0.1],
+        back: [0.5, 0.5, 0.5],
+        front: [1.0, 1.0, 1.0],
+        border: [0.0, 0.0, 0.0],
+        red: [1.0, 0.0, 0.0],
+        black: [0.0, 0.0, 0.0]
+    ),
+    "Traditional": Theme(
+        bg: [0.1, 0.5, 0.1],
+        back: [0.7, 0.7, 0.7],
+        front: [1.0, 1.0, 1.0],
+        border: [0.0, 0.0, 0.0],
+        red: [1.0, 0.0, 0.0],
+        black: [0.0, 0.0, 0.0]
+    )
 ]
 
 func get_current_theme() -> Theme {
