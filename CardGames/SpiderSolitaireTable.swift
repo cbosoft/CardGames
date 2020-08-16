@@ -27,7 +27,47 @@
 import SpriteKit
 import Foundation
 
+
+
 class SpiderSolitaireTable : Table {
+    
+    
+    class SpiderWinMove: Move {
+        
+        private var table: SpiderSolitaireTable
+        private var completed_stack: TopStack
+        private var source: CardStack
+        
+        init(table: SpiderSolitaireTable, stack: TopStack, source: CardStack) {
+            self.table = table
+            self.completed_stack = stack
+            self.source = source
+        }
+        
+        func undo() {
+            for card in self.completed_stack.cards {
+                card.isHidden = false
+                card.alpha = 1.0
+                self.source.put_card(card)
+            }
+            
+            var  index: Int? = nil
+            for i in 0..<self.table.completed_stacks.count {
+                let stack = self.table.completed_stacks[i]
+                if stack == self.completed_stack {
+                    index = i
+                }
+            }
+            
+            if let index = index {
+                self.table.completed_stacks.remove(at: index)
+            }
+            else {
+                fatalError("Completion undo failed")
+            }
+        }
+    }
+    
     
     private var visible_stacks: [VisibleStack] = []
     private var completed_stacks: [TopStack] = []
@@ -141,6 +181,7 @@ class SpiderSolitaireTable : Table {
                 }
                 if let start_index = started {
                     // going down the values K->A
+                    // TODO: implement completion undo
                     if next.value == Deck.prev_in_sequence(value: card.value) {
                         if next.value == "A" {
                             // complete stack from $start_index to (i+1)
@@ -152,6 +193,8 @@ class SpiderSolitaireTable : Table {
                                     new_completed.cards.append(card)
                                     card.run(action: SKAction.move(to: new_completed.get_next_card_position(), duration: 0.2))
                                 }
+                                let move = SpiderWinMove(table: self, stack: new_completed, source: stack)
+                                self.undo_stack.append(move)
                             }
                             else {
                                 print("completed temp failure")
@@ -159,7 +202,10 @@ class SpiderSolitaireTable : Table {
                             }
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                new_completed.display_cards()
+                                if let move = stack.post_move() {
+                                    self.undo_stack.append(move)
+                                }
+                                stack.display_cards()
                             }
                             
                             if let last = new_completed.cards.last {
