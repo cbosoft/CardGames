@@ -108,7 +108,7 @@ class SolitaireTable: Table {
     }
     
     // MARK: Autocomplete
-    override func auto_complete_one() -> Bool {
+    func try_move_card_to_top() -> Bool {
         var source_stacks: [CardStack] = []
         source_stacks.append(contentsOf: self.visible_stacks)
         source_stacks.append(self.deck_stack)
@@ -134,6 +134,29 @@ class SolitaireTable: Table {
         
         
         return false
+        
+    }
+    
+    func ready_to_finish() -> Bool {
+        for stack in self.visible_stacks {
+            for card in stack.cards {
+                if !card.is_face_up {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
+    override func auto_complete_one() -> Bool {
+        let rv = self.try_move_card_to_top()
+        
+        if !rv && self.ready_to_finish() && self.deck_stack.cards.count > 0 {
+            self.deck_stack.next_card()
+            return self.auto_complete_one()
+        }
+        
+        return rv
     }
     
     // MARK: Menu

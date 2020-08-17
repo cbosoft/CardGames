@@ -33,8 +33,8 @@ class DeckStack: CardStack {
     private var index: Int = 0
     private var last_taken: Card? = nil
     
-    private var flipped_pile: [Card] = []
-    private var hidden_pile: [Card] = []
+    var flipped_pile: [Card] = []
+    var hidden_pile: [Card] = []
     
     // settings
     var number_flipped: Int
