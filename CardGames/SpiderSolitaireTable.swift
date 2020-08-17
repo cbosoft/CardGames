@@ -75,7 +75,7 @@ class SpiderSolitaireTable : Table {
     
     private var spacing: CGFloat {
         get {
-            let w = self.scene?.size.width ?? 1024
+            let w = self.scene?.size.width ?? 1280
             return w / 11.0
         }
     }
