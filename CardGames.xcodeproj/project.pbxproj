@@ -86,8 +86,6 @@
 		8358785624DB0D4300A3AFCA /* DeckStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStack.swift; sourceTree = "<group>"; };
 		8358785824DB169200A3AFCA /* TopStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStack.swift; sourceTree = "<group>"; };
 		8358785A24DB179500A3AFCA /* SuitedTopStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuitedTopStack.swift; sourceTree = "<group>"; };
-		8358785C24DC017000A3AFCA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		8358785D24DC019C00A3AFCA /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		8358785E24DD7EED00A3AFCA /* AlternatingColourVisibleStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternatingColourVisibleStack.swift; sourceTree = "<group>"; };
 		8358786024DD905100A3AFCA /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		8358786224DD919700A3AFCA /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 				8358786424DD926D00A3AFCA /* MenuButton.swift */,
 				8358786024DD905100A3AFCA /* MenuScene.sks */,
 				8358786224DD919700A3AFCA /* MenuScene.swift */,
-				8358785C24DC017000A3AFCA /* README.md */,
 				8384821D24E2D2F800EA81D7 /* SameSuitVisibleStack.swift */,
 				8358785424DB0C9400A3AFCA /* SolitaireTable.swift */,
 				8384821B24E2C6B100EA81D7 /* SpiderSolitaireTable.swift */,
@@ -174,7 +171,6 @@
 				8358784D24DAFA3B00A3AFCA /* Structure.md */,
 				8358785A24DB179500A3AFCA /* SuitedTopStack.swift */,
 				8358785224DB0BD200A3AFCA /* Table.swift */,
-				8358785D24DC019C00A3AFCA /* TODO.md */,
 				8358785824DB169200A3AFCA /* TopStack.swift */,
 				8384821F24E2D3E000EA81D7 /* TwoSuitDeck.swift */,
 				8384822324E2FC4800EA81D7 /* SingleSuitDeck.swift */,
